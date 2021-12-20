@@ -1,69 +1,41 @@
-import React, { useState } from 'react'
+import React from 'react';
+import emailjs from 'emailjs-com';
 import styles from './styles.module.scss'
 
-import contat from "./api/contact"
+const Forms = () => {
 
-function Forms () {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const sendEmail = (event) => {
+    event.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Sending')
-
-  let data = {
-      name,
-      email,
-      message
-  }
-
-  fetch("./api/contact", {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then((response) => {
-      console.log('Response received')
-      if (response.status === 200) {
-        console.log('Response succeeded!')
-        setSubmitted(true)
-        setName('')
-        setEmail('')
-        setBody('')
-      }
-    }).catch ((error) => {
-    console.log(error)
-    })
-  }
+    emailjs.sendForm('gmail', 'coopers_template', event.target, 'user_UJwTBtiihcWWvri6q5IJP')
+      .then((result) => {
+          console.log(result.text);
+          alert("E-mail sent successfully");
+      }, (error) => {
+          console.log(error.text);
+          alert("Something went wrong")
+      });
+      event.target.reset()
+  };
 
   return (
+    <form onSubmit={sendEmail} className={ styles.formsSection } >
 
-    <section className={styles.formsSection}>
-      <form className={styles.main} >
+      <label>Name</label>
+      <input type="text" name="user_name" className={ styles.inputField } placeholder="Your name" name="name"/>
 
-        <div className={styles.inputGroup}>
-          <label htmlFor='name'>Name</label>
-          <input type='text' onChange={(e)=>{setName(e.target.value)}} name='name' className={styles.inputField}/>
-        </div>
+      <label>Email</label>
+      <input type="email" name="user_email"  className={ styles.inputField } placeholder="Please, inform your e-mail" name="email"/>
 
-        <div className={styles.inputGroup} >
-          <label htmlFor='email'>Email</label>
-          <input type='text' onChange={(e)=>{setEmail(e.target.value)}} name='email' className={styles.inputField}/>
-       </div>
+      <label>Subject</label>
+      <input type="text" name="user_email"  className={ styles.inputField } placeholder="Please, write about the subject" name="subject"/>
 
-       <div className={styles.inputGroup} >
-         <label htmlFor='message'>Message</label>
-         <input type='text' onChange={(e)=>{setMessage(e.target.value)}} name='message' className={styles.inputField}/>
-       </div>
+      <label>Message</label>
+      <textarea name="message" placeholder="Please, write your message" name="message"/>
 
-       <input type='submit' onClick={(e)=>{handleSubmit(e)}}/>
-      </form>
-    </section>
-  )
-}
+      <input type="submit" value="Send" className={ styles.inputField } />
+    </form>
+  );
+};
 
-export default Forms;
+export default Forms
