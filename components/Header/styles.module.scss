@@ -1,0 +1,88 @@
+.headerContainer {
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        .sectionHeader_FirstDiv {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+
+            h1 {
+                margin-left: 10px;
+                font-size: 1.5rem;
+            }
+        }
+
+        .sectionHeader_SecondDiv {
+            button {
+                display: flex;
+                justify-content: center;
+                background: var(--black);
+                color:white;
+                width: 60px;
+                font-size: 1rem;
+                padding: 0.7142857142857143rem 2.857142857142857rem;
+            }
+        }
+    }
+  .sectionParagraph {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align:center;
+
+    .sectionParagraph_FIrstDiv {
+        p {
+            &:first-child {
+                text-align: start;
+                font-weight: 700;
+                font-size: 4.285714285714286rem;
+            }
+            &:nth-child(2){
+                font-family: 'Montserrat';
+                font-weight: bold;
+                font-size: 24px;
+                margin-top: 30px;
+                text-align: start;
+            }
+        }
+        .sectionParagraph_Span {
+            color: #4AC959;
+        }
+        .headerLink_GoToButton{
+            border: none;
+            width: 150px;
+            height: 35px;
+            margin-top: 25px;
+            background: var(--green);
+            color: white;
+            align-items: center;
+            border-radius: 7px;
+        }
+    }
+    .sectionParagraph_SecondDiv {
+        display: none;
+        @media (min-width: 1020px) {
+            display:flex;
+
+            .headerImage_BackLogo {
+                display: flex;
+                position: absolute;
+                z-index: -1;
+                width: 500px;
+            }
+            .headerImage_Office {
+                position: relative;
+                z-index: 1;
+                width: 350px;
+                height: 350px;
+                margin-top: 115px;
+                margin-left: 100px;
+            }
+        }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.carouselSection {
+    background-color: white;
+
+    .carouselSection_Background{
+        background-image: url('../../public/images/background.png');
+        // background-size: 800px 520px;
+        background-size: 75% 75%;
+        padding: 10px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 10px 10px 10px 10px;
+
+        .carouselSection_Paragraph {
+            color: white;
+            font-family: 'Montserrat';
+            font-weight: bold;
+            font-size: 48px;
+            margin-top: 100px;
+            padding-left: 15%;
+        }
+
+        .carouselSlide_Cards {
+            display: flex;
+            flex-direction: column;
+            align-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 25%;
+            margin-left: 30%;
+
+            .carouselSlide_Card {
+                z-index: -1;
+                width: 180px;
+                height: 100px;
+                border-radius: 10px 10px 0 0;
+                display: flex;
+                justify-content: center;
+                margin-top: 45%;
+            }
+
+            .carouselSlide_Logo{
+                position: absolute;
+                z-index: 1;
+                /* margin-left: 65%; */
+                /* margin-top: 39%; */
+                margin: 38% 65%;
+            }
+
+            .carouselSlide_DivParagraph {
+                background-color: white;
+                width: 180px;
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+
+                p {
+                  font-family: 'Montserrat';
+                  font-size: 18px;
+                  line-height: 21px;
+                }
+
+                button {
+                    color: var(--green-500);
+                    font-family: 'Soleil';
+                    background-color: transparent;
+                    background-repeat: no-repeat;
+                    border: none;
+                    cursor: pointer;
+                    overflow: hidden;
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+
+
