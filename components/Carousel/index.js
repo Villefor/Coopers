@@ -57,9 +57,10 @@ function Carousel () {
 
   return(
     <section className={styles.carouselSection}>
+
       <div className={styles.carouselSection_Background}>
         <p className={ styles.carouselSection_Paragraph }>good things</p>
-        <Swiper
+        <Swiper className="carouselSwiper"
           modules={[Pagination,]}
           spaceBetween={20}
           slidesPerView={3}
@@ -76,6 +77,7 @@ function Carousel () {
                   <img className ={ styles.carouselSlide_Logo } src='/images/icon_coopers.png' alt ="Logo" />
                 {/* </div> */}
                 <div className={ styles.carouselSlide_DivParagraph }>
+                  <button className= { styles.carouselSlide_Button }>function</button>
                   <p>{ cards.description }</p>
                   <Link href="/development"><button> Read more </button></Link>
                 </div>
@@ -85,6 +87,7 @@ function Carousel () {
           ...
           </Swiper>
       </div>
+
     </section>
   )
 }

@@ -7,7 +7,9 @@
         width: 100%;
         text-align: center;
         height:100%;
+
         .sectionMain_Div {
+            z-index: -2;
             background-color: black;
             color: white;
             clip-path: polygon(0 35%, 0 54%, 100% 45%, 100% 27%);
@@ -51,7 +53,6 @@
                 line-height: 80px;
               }
           }
-
 
         }
         .toDoDiv_Done {
