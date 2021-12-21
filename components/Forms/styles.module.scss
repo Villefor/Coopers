@@ -1,78 +1,100 @@
 .formsSection{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 250px;
+  .formContainer {
+    width: 80%;
+
+  .formFigure{
     display: flex;
     flex-direction: column;
     align-items: center;
-    .inputGroup {
-      height: 50%;
-      width: 200%;
-      display: flex;
-      flex-direction: column;
-      margin: 10px 0;
+
+    @media (min-width: 1020px) {
+      .formImage_Avatar{
+        z-index: 1;
+        border-radius: 50%;
+      }
+
+      .formImage_Bar{
+        z-index: -1;
+        position: absolute;
+        margin-top: 88px;
+        margin-left: -80px;
+      }
     }
-    .formContainer{
+
+    // .formImage_Avatar{
+    //   display: none;
+    // }
+
+    // .formImage_Bar{
+    //   display: none;
+    // }
+
+    .formImage_Contact{
+      margin-right: -20px;
+    }
+  }
+
+  div {
+    display: flex;
+    margin-top: 16px;
+    label {
+      display: block;
+    }
+    input {
       display: flex;
       flex-direction: row;
+      border-radius: 8px;
+    }
+  }
+
+  .formContent {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    label {
+      border: 0px;
+      margin-top: 16px;
+      margin-bottom: 5px;
+    }
+    input {
+      padding: 16px;
+      border-radius: 8px;
+    }
+    textarea {
+      border-radius: 8px;
+      padding: 8px;
+      height: 200px;
     }
 
-    .formFigure{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 40%;
-
-      @media (min-width: 1020px) {
-        .formImage_Avatar{
-          z-index: 1;
-          border-radius: 50%;
-        }
-
-        .formImage_Bar{
-          z-index: -1;
-          position: absolute;
+    .inputEmailAndTelephone {
+      div {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+        width: 100%;
+        margin: 0 auto;
+        input {
+          &.inputFieldEmail {
+            margin-right: 10px;
+          }
         }
       }
-
-      // .formImage_Avatar{
-      //   display: none;
-      // }
-
-      // .formImage_Bar{
-      //   display: none;
-      // }
-
-      .formImage_Contact{
-        margin-right: 60%
-      }
-
     }
+  }
 
-      .inputLabel {
-        display: block;
-        text-align: left;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 20px;
-      }
-
-      .inputField {
-            display: block;
-            width: 40%;
-            height: 30px;
-            border: 1 px solid #06152B;
-            border-radius: 4px 4px 4px 4px;
-      }
-
-      .formDiv {
-
-        width: 30%;
-        .inputField_row {
-          float: left;
-          width: 50%;
-          border: 1 px solid #06152B;
-          border-radius: 4px 4px 4px 4px;
-        }
-      }
-
+  .inputButtonSend {
+    background: #46BD62;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    margin-top: 40px;
+    border: transparent;
+    margin-bottom: 100px;
+  }
+}
 }

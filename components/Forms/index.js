@@ -19,32 +19,35 @@ const Forms = () => {
   };
 
   return (
-    <form onSubmit={sendEmail} className={ styles.formsSection } >
-      <figure className={styles.formFigure}>
-        <img className ={styles.formImage_Avatar} src ="/images/tatiana.png" alt ="the person responsible for answering your message"  />
-        <img className ={styles.formImage_Bar} src ="/images/grafismo.png" alt ="background"  />
-        <img className ={styles.formImage_Contact} src ="/images/getInTouch.png" alt ="get in touch"  />
-      </figure>
+    <section onSubmit={sendEmail} className={ styles.formsSection }>
+      <div className={styles.formContainer}>
+        <figure className={styles.formFigure}>
+          <img className ={styles.formImage_Avatar} src ="/images/tatiana.png" alt ="the person responsible for answering your message"  />
+          <img className ={styles.formImage_Bar} src ="/images/grafismo.png" alt ="background"  />
+          <img className ={styles.formImage_Contact} src ="/images/getInTouch.png" alt ="get in touch"  />
+        </figure>
+        <form onSubmit={sendEmail} className={styles.formContent}>
+          <label>Name</label>
+          <input type="text" name="user_name" className={ styles.inputField } placeholder="Your name" name="name"/>
+            <div className={styles.inputEmailAndTelephone}>
+              <div>
+                <label className ={ styles.inputLabel }>Email*</label>
+                <input type="email" name="user_email"  className={ styles.inputFieldEmail} placeholder="example@example.com"/>
+              </div>
+              <div>
+                <label className ={ styles.inputLabel }>Telephone*</label>
+                <input type="text" name="user_telephone"  className={ styles.inputField_row } placeholder="( ) __-_"/>
+              </div>
+            </div>
+          <label>Subject</label>
+          <input type="text" name="user_email"  className={ styles.inputField } placeholder="Please, write about the subject" name="subject"/>
 
-      <label>Name</label>
-      <input type="text" name="user_name" className={ styles.inputField } placeholder="Your name" name="name"/>
-
-      <div className={styles.formDiv}>
-        <label className ={ styles.inputLabel }>Email*</label>
-        <input type="email" name="user_email"  className={ styles.inputField_row} placeholder="Please, inform your e-mail" name="email"/>
-
-        <label className ={ styles.inputLabel }>Telephone*</label>
-        <input type="number" name="user_telephone"  className={ styles.inputField_row } placeholder="Please, inform your number" name="number"/>
+          <label>Message*</label>
+          <textarea name="message" placeholder="Please, write your message" name="message"/>
+          <input type="submit" value="Send now" className={ styles.inputButtonSend } />
+        </form>
       </div>
-
-      <label>Subject</label>
-      <input type="text" name="user_email"  className={ styles.inputField } placeholder="Please, write about the subject" name="subject"/>
-
-      <label>Message*</label>
-      <textarea name="message" placeholder="Please, write your message" name="message"/>
-
-      <input type="submit" value="Send" className={ styles.inputField } />
-    </form>
+    </section>
   );
 };
 

@@ -1,17 +1,17 @@
 import React from "react";
 
+import styles from "./styles.module.scss"
 
-
-function Footer() {
+const Footer = () => {
     return (
-        <section className="section">
-            <footer className="section-footer">
+        <section className={styles.section}>
+            <footer className={styles.footer}>
                 <h1>Need help ?</h1>
                 <h1>coopers@coopers.pro </h1>
-                <p className="section-footer__paragraph">© 2021 Coopers. All rights reserved.</p>
+                <p className={styles.footer__paragraph}>© 2021 Coopers. All rights reserved.</p>
                 <div>
                   <figure>
-                    <img className ="section-footer__img" src ='/images/footer_rec.png' alt ="Rectangle"  />
+                    <img className ={styles.footer__img} src ='/images/footer_rec.png' alt ="Rectangle"  />
                   </figure>
                 </div>
             </footer>
