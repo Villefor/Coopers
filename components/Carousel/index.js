@@ -60,6 +60,7 @@ function Carousel () {
 
       <div className={styles.carouselSection_Background}>
         <p className={ styles.carouselSection_Paragraph }>good things</p>
+
         <Swiper className="carouselSwiper"
           modules={[Pagination,]}
           spaceBetween={20}

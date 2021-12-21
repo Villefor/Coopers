@@ -62,9 +62,9 @@
             .carouselSlide_Logo{
                 position: absolute;
                 z-index: 1;
-                /* margin-left: 65%; */
-                /* margin-top: 39%; */
-                margin: 38% 65%;
+                margin-left: 285px;
+                margin-top: 170px;
+
             }
 
             .carouselSlide_DivParagraph {
@@ -75,21 +75,47 @@
                 display: flex;
                 flex-direction: column;
 
+                .carouselSlide_Button {
+                    border: 1px solid #9499B3;
+                    max-width: 86px;
+                    background-color: black;
+                    // width: 86px;
+                    // height: 31px;
+                    color:#9499B3;
+                    margin-top: 30px;
+                    margin-left: 30px;
+                    // padding: 6px, 12px;
+                    border-radius: 16px;
+                    font-family: Soleil;
+                    font-style: normal;
+                    font-weight: normal;
+                    // font-size: 16px;
+                }
+
                 p {
                   font-family: 'Montserrat';
                   font-size: 18px;
                   line-height: 21px;
+                  margin-top: 22px;
+                  margin-left: 32px;
                 }
 
                 button {
-                    color: var(--green-500);
-                    font-family: 'Soleil';
-                    background-color: transparent;
-                    background-repeat: no-repeat;
-                    border: none;
-                    cursor: pointer;
-                    overflow: hidden;
-                    outline: none;
+                  flex: 1;
+                  color: var(--green-500);
+                  font-family: Soleil;
+                  font-style: normal;
+                  font-weight: bold;
+                  font-size: 16px;
+                  line-height: 150%;
+                  background-color: transparent;
+                  background-repeat: no-repeat;
+                  border: none;
+                  cursor: pointer;
+                  overflow: hidden;
+                  outline: none;
+                  margin-top: 40px;
+                  margin-right: 232px;
                 }
             }
         }
