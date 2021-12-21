@@ -67,8 +67,8 @@ const handleClick = () => {
                   </ul>
                 </div>
               </div>
-              <button onClick={handleClick}>Submit Task</button>
-              <button >Erase all</button>
+                <button onClick={handleClick}>submit</button>
+                <button >erase all</button>
             </div>
 
             <div className={styles.toDoDiv_Done}>
