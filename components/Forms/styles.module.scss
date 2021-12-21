@@ -9,10 +9,70 @@
       flex-direction: column;
       margin: 10px 0;
     }
-          .inputLabel {
-            text-align: left;
-          }
-          .inputField {
+    .formContainer{
+      display: flex;
+      flex-direction: row;
+    }
+
+    .formFigure{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 40%;
+
+      @media (min-width: 1020px) {
+        .formImage_Avatar{
+          z-index: 1;
+          border-radius: 50%;
+        }
+
+        .formImage_Bar{
+          z-index: -1;
+          position: absolute;
+        }
+      }
+
+      // .formImage_Avatar{
+      //   display: none;
+      // }
+
+      // .formImage_Bar{
+      //   display: none;
+      // }
+
+      .formImage_Contact{
+        margin-right: 60%
+      }
+
+    }
+
+      .inputLabel {
+        display: block;
+        text-align: left;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      .inputField {
+            display: block;
+            width: 40%;
             height: 30px;
-          }
+            border: 1 px solid #06152B;
+            border-radius: 4px 4px 4px 4px;
+      }
+
+      .formDiv {
+
+        width: 30%;
+        .inputField_row {
+          float: left;
+          width: 50%;
+          border: 1 px solid #06152B;
+          border-radius: 4px 4px 4px 4px;
+        }
+      }
+
 }
