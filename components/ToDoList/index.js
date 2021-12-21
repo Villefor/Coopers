@@ -67,15 +67,15 @@ const handleClick = () => {
                   </ul>
                 </div>
               </div>
-                <button onClick={handleClick}>submit</button>
-                <button >erase all</button>
+              <button className={styles.toDO_Buttons} onClick={handleClick}>Submit</button>
+              <button className={styles.toDO_Buttons} onClick={ () => setListTodo([]) }>Erase all</button>
             </div>
 
             <div className={styles.toDoDiv_Done}>
               <img className ={styles.toDo_image} src ="/images/green_rec.png" alt ="Green Rectangle"  />
               <h2>Done</h2>
               <p>Congratulions! <br/> <strong>You have done { count } tasks</strong></p>
-              <button>Erase all</button>
+              <button onClick={ () => setCount(0) } >Erase all</button>
             </div>
 
         </section>

@@ -10,18 +10,22 @@
         background-repeat: no-repeat;
         background-position: center;
         border-radius: 10px 10px 10px 10px;
-        width: 1080px;
+        width: 900px;
         height: 520px;
+        margin-top: 68px;
+        margin-left: 120px;
 
-        // @media (min-width: 1020px) {
-        //     background-image: url('../../public/images/background.png');
-        //     // background-size: 800px 520px;
-        //     background-size: 75% 75%;
-        //     padding: 10px;
-        //     background-repeat: no-repeat;
-        //     background-position: center;
-        //     border-radius: 10px 10px 10px 10px;
-        // }
+        @media (min-width: 620px) {
+            background-image: url('../../public/images/background.png');
+            background-size: 1080px 520px;
+            padding: 10px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px 10px 10px 10px;
+            width: 1080px;
+            height: 520px;
+            margin-top: 68px;
+        }
 
         .carouselSwiper {
             padding-top: 40px;
@@ -43,9 +47,10 @@
             align-content: flex-end;
             align-items: center;
             flex-wrap: wrap;
-            width: 80px;
-            height: 100px;
-          @media (min-width: 768px) {
+            width: 100px;
+            height: 400px;
+
+          @media (min-width: 620px) {
             display: flex;
             flex-direction: column;
             align-content: flex-end;
