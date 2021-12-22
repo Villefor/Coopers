@@ -263,10 +263,10 @@
       margin-left: 100px;
     }
 
-    @media (min-width: 620px) {
+    @media (min-width: 768px) {
       margin-top: 40px;
       div {
-        margin-left: 25px;
+        // margin-left: 80px;
       }
     }
   }

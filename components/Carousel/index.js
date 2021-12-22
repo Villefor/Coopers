@@ -1,12 +1,10 @@
-import React from 'react';
-import Link  from 'next/link'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, } from 'swiper';
-import styles from './styles.module.scss'
+import React, { useRef } from 'react';
+import styles from './styles.module.scss';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 function Carousel () {
+  const carousel = useRef(null);
 
   const info = [
     {
@@ -55,38 +53,47 @@ function Carousel () {
     },
   ];
 
+  const handleLeftClick = (event) => {
+    event.preventDefault();
+
+    carousel.current.scrollLeft -= carousel.current.offsetWidth;
+  }
+
+  const handleRightClick = (event) => {
+    event.preventDefault();
+
+    carousel.current.scrollLeft += carousel.current.offsetWidth;
+  }
+
   return(
     <section className={styles.carouselSection}>
 
       <div className={styles.carouselSection_Background}>
         <p className={ styles.carouselSection_Paragraph }>good things</p>
+      </div>
 
-        <Swiper className="carouselSwiper"
-          modules={[Pagination,]}
-          spaceBetween={20}
-          slidesPerView={3}
-          listperpage={3}
-          pagination={{ clickable: true }}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-          {info.map((cards, index) => (
-            <SwiperSlide key={ index } className="slide">
-              <div className={styles.carouselSlide_Cards}>
-                {/* <div className="user-image"> */}
-                  <img className={ styles.carouselSlide_Card } src={cards.image} alt="business card"/>
-                  <img className ={ styles.carouselSlide_Logo } src='/images/icon_coopers.png' alt ="Logo" />
-                {/* </div> */}
-                <div className={ styles.carouselSlide_DivParagraph }>
-                  <button className= { styles.carouselSlide_Button }>function</button>
-                  <p>{ cards.description }</p>
-                  <Link href="/development"><button> Read more </button></Link>
-                </div>
+      <div className={styles.carrouselCardContainer} ref={carousel}>
+        {
+          info.map((item, index) => (
+            <div key ={index} className={styles.carrouselCardContent}>
+              <div className={styles.carroselHeaderImg}>
+                <img key ={index} src={item.image}/>
               </div>
-            </SwiperSlide>
-          ))}
-          ...
-          </Swiper>
+              <div className={styles.carroselHeaderLogo}>
+                <img src="/images/icon_coopers.png"/>
+              </div>
+              <div className={styles.carroselDescription}>
+                <button>function</button>
+                <p>{item.description}</p>
+                <p>read more</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div className={styles.buttonsCarrousel}>
+        <button onClick={handleLeftClick}></button>
+        <button onClick={handleRightClick}></button>
       </div>
 
     </section>

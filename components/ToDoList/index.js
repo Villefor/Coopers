@@ -54,18 +54,28 @@ const handleClick = () => {
               <img className ={styles.toDo_image} src ="/images/orange_rec.png" alt ="Orange Rectangle"  />
               <h2>To-do</h2>
               <p>Take a breath. <br/> Start doing.</p>
-              <input type ="text" onChange={ (event) => setTaskName(event.target.value) } placeholder="Please, write a daily assigment" />
+              <input
+                 className={ styles.toDoInput }
+                 type ="text"
+                 onChange={ (event) => setTaskName(event.target.value) }
+                 placeholder="Please, write a daily assigment"
+                 />
+
               <div ref={dragPreview} style={{ opacity: isDragging ? 0.5 : 1}}>
                 <div role="Handle" ref={drag}>
-                  <ul>
+                  <div>
                   {
                     listTodo.length > 0 &&
                     listTodo.map((item, index) => (
-                      <li key={index}>{item}</li>
+                      <div className={ styles.toDo_Map }>
+                        <button>  </button>
+                        <p key={index}>{item}</p>
+                      </div>
                     ))
                   }
-                  </ul>
+                  </div>
                 </div>
+
               </div>
               <button className={styles.toDO_Buttons} onClick={handleClick}>Submit</button>
               <button className={styles.toDO_Buttons} onClick={ () => setListTodo([]) }>Erase all</button>

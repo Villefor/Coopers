@@ -33,7 +33,7 @@ const Forms = () => {
 
           <label>Name</label>
           <input type="text" name="user_name" className={ styles.inputField } placeholder="Your name" name="name"/>
-            <div className={styles.inputEmailAndTelephone}>
+            <div className={styles.inputEmailAndTelphone}>
 
               <div>
                 <label className ={ styles.inputLabel }>Email*</label>
@@ -47,9 +47,8 @@ const Forms = () => {
                     name="telphone"
                     className={ styles.inputField_row }
                     placeholder="(*) - xxxxx xxxx"
-                    pattern="[0-9]{2} [0-9]{5} [0-9]{4}"
                     maxLength="12"
-                    title="Ten digits code"/>
+                  />
               </div>
 
             </div>

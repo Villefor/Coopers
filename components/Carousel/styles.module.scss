@@ -1,150 +1,239 @@
 .carouselSection {
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    min-width: 100%;
 
-    @media (min-width: 620px) {
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        min-width: 100%;
-    }
-
-    .carouselSection_Background{
-        background-image: url('../../public/images/background.png');
-        background-size: 650px 320px;
-        padding: 10px;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 10px 10px 10px 10px;
-        width: 650px;
-        height: 320px;
-        margin-top: 100px;
-
-        @media (min-width: 620px) {
-            background-image: url('../../public/images/background.png');
-            background-size: 1080px 520px;
-            padding: 10px;
-            background-repeat: no-repeat;
-            background-position: center;
-            border-radius: 10px 10px 10px 10px;
-             width: 900px;
-             height: 520px;
-             margin-top: 68px;
-             margin-left: 120px;
-        }
-
-        .carouselSwiper {
-            padding-top: 40px;
-            padding-left: 100px;
-        }
-
+    .carouselSection_Background {
+        height: 520px;
+        background: #4AC959;
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 8px;
         .carouselSection_Paragraph {
             color: white;
-            font-family: 'Montserrat';
-            font-weight: bold;
-            font-size: 48px;
-            padding-left: 40px;
-            padding-top: 80px;
-
-            @media (min-width: 620px) {
+            font-size: 3.4285714285714284rem;
+            font-family: 'Poppins';
+            padding: 5.714285714285714rem 0 0 5.714285714285714rem;
+                @media (min-width: 1024px) {
                 color: white;
-                font-family: 'Montserrat';
-                font-weight: bold;
-                font-size: 48px;
-                padding-left: 80px;
-                padding-top: 80px;
+                font-size: 3.4285714285714284rem;
+                font-family: 'Poppins';
+                padding: 5.714285714285714rem 0 0 5.714285714285714rem;
             }
         }
+    }
+    .carrouselCardContainer::-webkit-scrollbar {
+        display: none;
+    }
 
-        .carouselSlide_Cards {
-            display: flex;
-            flex-direction: column;
-            align-content: flex-end;
-            align-items: center;
-            flex-wrap: wrap;
-            width: 100px;
-            height: 400px;
+    .carrouselCardContainer {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        margin-top: -320px;
+        margin-left: 2rem;
 
-          @media (min-width: 620px) {
-            display: flex;
-            flex-direction: column;
-            align-content: flex-end;
-            align-items: center;
-            flex-wrap: wrap;
-            width: 360px;
-            height: 430px;
-          }
-
-            .carouselSlide_Card {
-                z-index: -1;
-                max-width: 360px;
-                width: 360px;
-                height: 200px;
-                border-radius: 10px 10px 0 0;
-                display: flex;
-                margin-left: 80px;
-            }
-
-            .carouselSlide_Logo{
-                position: absolute;
-                z-index: 1;
-                margin-left: 285px;
-                margin-top: 170px;
-
-            }
-
-            .carouselSlide_DivParagraph {
-                background-color: white;
-                width: 360px;
-                height: 200px;
-                margin-left: 80px;
-                display: flex;
-                flex-direction: column;
-
-                .carouselSlide_Button {
-                    border: 1px solid #9499B3;
-                    max-width: 86px;
-                    background-color: black;
-                    color:#9499B3;
-                    margin-top: 30px;
-                    margin-left: 30px;
-                    border-radius: 16px;
-                    font-family: Soleil;
-                    font-style: normal;
-                    font-weight: normal;
+        .carrouselCardContent {
+            background: white;
+            flex: none;
+            width: 350px;
+            margin-right: 50px;
+            border-radius: 16px;
+            .carroselHeaderImg {
+                img {
+                    width: 350px;
+                    height: 220px;
+                    border-radius: 16px 16px 0px 0px;
                 }
-
-                p {
-                  font-family: 'Montserrat';
-                  font-size: 18px;
-                  line-height: 21px;
-                  margin-top: 22px;
-                  margin-left: 32px;
-                }
-
+            }
+            .carroselHeaderLogo {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: -30px;
+                margin-right: 20px;
+            }
+            .carroselDescription {
+                margin-left: 1rem;
                 button {
-                  flex: 1;
-                  color: var(--green-500);
-                  font-family: Soleil;
-                  font-style: normal;
-                  font-weight: bold;
-                  font-size: 16px;
-                  line-height: 150%;
-                  background-color: transparent;
-                  background-repeat: no-repeat;
-                  border: none;
-                  cursor: pointer;
-                  overflow: hidden;
-                  outline: none;
-                  margin-top: 40px;
-                  margin-right: 232px;
+                    font-size: 1.1428571428571428rem;
+                    background: none;
+                    border: 1px solid #9499B3;
+                    border-radius: 25px;
+                    padding: 0.4rem 0.8rem;
+                    color: #9499B3;
+                    font-family: 'Poppins';
+                }
+                p {
+                    color: #42D76B;
+                    font-size: 1.1428571428571428rem;
+                    font-weight: 700;
+                    font-family: 'Poppins';
+                    &:nth-child(2) {
+                        font-family: 'Montserrat';
+                        font-size: 1.2857142857142858rem;
+                        font-weight: 600;
+                        margin-top: 1rem;
+                        color: black;
+                        height: 90px;
+                    }
                 }
             }
         }
     }
-}
+    .buttonsCarrousel {
+        margin-top: 2.142857142857143rem;
+        text-align: center;
+        button {
+            width: 25px;
+            height: 25px;
+            border: none;
+            margin-right: 10px;
+            background: #4AC959;
+            border-radius: 50%;
+        }
+    }
+  }
 
+    @media (min-width: 1024px) {
+        .carouselSection_Background {
+            height: 520px;
+            background: #4AC959;
+            width: 90%;
+            margin: 0 auto;
+            border-radius: 8px;
+            .carouselSection_Paragraph {
+                    @media (min-width: 1024px) {
+                    color: white;
+                    font-size: 3.4285714285714284rem;
+                    font-family: 'Poppins';
+                    padding: 5.714285714285714rem 0 0 5.714285714285714rem;
+                }
+            }
+        }
+        .carrouselCardContainer::-webkit-scrollbar {
+            display: none;
+        }
 
+        .carrouselCardContainer {
+            display: flex;
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            margin-top: -320px;
+            margin-left: 6rem;
 
+            @media (min-width: 1024px) {
+                display: flex;
+                width: 100%;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                margin-top: -320px;
+                margin-left: 9rem;
+
+                .carrouselCardContent {
+                    background: white;
+                    flex: none;
+                    width: 350px;
+                    margin-right: 50px;
+                    border-radius: 16px;
+                    .carroselHeaderImg {
+                        img {
+                            width: 350px;
+                            height: 220px;
+                            border-radius: 16px 16px 0px 0px;
+                        }
+                    }
+                    .carroselHeaderLogo {
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-top: -30px;
+                        margin-right: 20px;
+                    }
+                    .carroselDescription {
+                        margin-left: 1rem;
+                        button {
+                            font-size: 1.1428571428571428rem;
+                            background: none;
+                            border: 1px solid #9499B3;
+                            border-radius: 25px;
+                            padding: 0.4rem 0.8rem;
+                            color: #9499B3;
+                            font-family: 'Poppins';
+                        }
+                        p {
+                            color: #42D76B;
+                            font-size: 1.1428571428571428rem;
+                            font-weight: 700;
+                            font-family: 'Poppins';
+                            &:nth-child(2) {
+                                font-family: 'Montserrat';
+                                font-size: 1.2857142857142858rem;
+                                font-weight: 600;
+                                margin-top: 1rem;
+                                color: black;
+                                height: 90px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .carrouselCardContent {
+                background: white;
+                flex: none;
+                width: 350px;
+                margin-right: 50px;
+                border-radius: 16px;
+                .carroselHeaderImg {
+                    img {
+                        width: 350px;
+                        height: 220px;
+                        border-radius: 16px 16px 0px 0px;
+                    }
+                }
+                .carroselHeaderLogo {
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-top: -30px;
+                    margin-right: 20px;
+                }
+                .carroselDescription {
+                    margin-left: 1rem;
+                    button {
+                        font-size: 1.1428571428571428rem;
+                        background: none;
+                        border: 1px solid #9499B3;
+                        border-radius: 25px;
+                        padding: 0.4rem 0.8rem;
+                        color: #9499B3;
+                        font-family: 'Poppins';
+                    }
+                    p {
+                        color: #42D76B;
+                        font-size: 1.1428571428571428rem;
+                        font-weight: 700;
+                        font-family: 'Poppins';
+                        &:nth-child(2) {
+                            font-family: 'Montserrat';
+                            font-size: 1.2857142857142858rem;
+                            font-weight: 600;
+                            margin-top: 1rem;
+                            color: black;
+                            height: 90px;
+                        }
+                    }
+                }
+            }
+
+        }
+        .buttonsCarrousel {
+            margin-top: 2.142857142857143rem;
+            text-align: center;
+            button {
+                width: 25px;
+                height: 25px;
+                border: none;
+                margin-right: 10px;
+                background: #4AC959;
+                border-radius: 50%;
+            }
+        }
+    }
