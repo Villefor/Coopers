@@ -1,5 +1,4 @@
 .carouselSection {
-
     .carouselSection_Background {
         height: 520px;
         background: #4AC959;
@@ -9,12 +8,16 @@
         .carouselSection_Paragraph {
             color: white;
             font-size: 3.4285714285714284rem;
-            font-family: 'Poppins';
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: bold;
             padding: 5.714285714285714rem 0 0 5.714285714285714rem;
                 @media (min-width: 1024px) {
                 color: white;
                 font-size: 3.4285714285714284rem;
-                font-family: 'Poppins';
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: bold;
                 padding: 5.714285714285714rem 0 0 5.714285714285714rem;
             }
         }
@@ -25,11 +28,10 @@
 
     .carrouselCardContainer {
         display: flex;
-        width: 100%;
         overflow-x: auto;
         scroll-behavior: smooth;
         margin-top: -320px;
-        margin-left: 2rem;
+        margin-left: 4rem;
         .carrouselCardContent {
             background: white;
             flex: none;
@@ -83,8 +85,8 @@
         overflow-x: auto;
         scroll-behavior: smooth;
         margin-top: -320px;
-        // margin-left: 2rem;
-     }
+        margin-left: 9rem;
+      }
         .carrouselCardContent {
             background: white;
             flex: none;
@@ -113,13 +115,13 @@
                     border-radius: 25px;
                     padding: 0.4rem 0.8rem;
                     color: #9499B3;
-                    font-family: 'Poppins';
+                    font-family: 'Soleil';
                 }
                 p {
                     color: #42D76B;
                     font-size: 1.1428571428571428rem;
                     font-weight: 700;
-                    font-family: 'Poppins';
+                    font-family: 'Soleil';
                     &:nth-child(2) {
                         font-family: 'Montserrat';
                         font-size: 1.2857142857142858rem;
@@ -135,6 +137,7 @@
     .buttonsCarrousel {
         margin-top: 2.142857142857143rem;
         text-align: center;
+        margin-left: 200px;
         button {
             width: 25px;
             height: 25px;
@@ -142,6 +145,7 @@
             margin-right: 10px;
             background: #4AC959;
             border-radius: 50%;
+            margin-left: 10px;
         }
     }
   }

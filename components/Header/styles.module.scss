@@ -11,7 +11,7 @@
             display: flex;
             align-items: center;
             h1 {
-                @media (min-width: 1023px) {
+                @media (min-width: 1024px) {
                     font-size: 2.5rem;
                 }
                 font-size: 1.1428571428571428rem;
@@ -19,8 +19,9 @@
             }
         }
         .sectionHeader_SecondDiv {
+            z-index: 2;
             button {
-                @media (min-width: 1023px) {
+                @media (min-width: 1024px) {
                     font-size: 1.5rem;
                     padding: 0.8rem 2rem;
                 }
@@ -39,7 +40,7 @@
     }
 
     .sectionParagraph {
-        width: 80%;
+        width: 100%;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
@@ -49,19 +50,22 @@
             width:100%;
             text-align: center;
 
-            @media (min-width: 1023px) {
-                text-align: left;
+            @media (min-width: 1024px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-right: 19%;
             }
 
             p {
                 margin-top: 2rem;
 
-                @media (min-width: 1023px) {
+                @media (min-width: 1024px) {
                     margin-top: 0rem;
                     text-align: left;
                 }
                 &:first-child {
-                    @media (min-width: 1023px) {
+                    @media (min-width: 1024px) {
                         text-align: left;
                         font-size: 5rem;
                         line-height: 4rem;
@@ -71,7 +75,7 @@
                     font-family: 'Montserrat';
                     .sectionParagraph_Span {
                         color: #4AC959;
-                        @media (min-width: 1023px) {
+                        @media (min-width: 1024px) {
                             text-align: left;
                             font-size: 3rem;
                             font-weight: 400;
@@ -107,24 +111,31 @@
 
         .sectionParagraph_SecondDiv {
             display: none;
-            @media (min-width: 1023px) {
-                display: block;
+            @media (min-width: 1024px) {
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
             }
             .headerImage_BackLogo {
                 display: flex;
                 position: absolute;
-                z-index: -1;
-                width: 450px;
-                height: 450px;
+                z-index: 1;
+                height: 83%;
+                margin-top: -90px;
             }
 
             .headerImage_Office {
+                // position: relative;
+                // z-index: 1;
+                // max-width: 350px;
+                // height: 330px;
+                // margin-top: 50px;
+                // margin-left: 60px;
                 position: relative;
                 z-index: 1;
-                max-width: 350px;
                 height: 330px;
-                margin-top: 50px;
-                margin-left: 60px;
+                margin-top: 30px;
+                padding-right: 120px;
             }
         }
     }
