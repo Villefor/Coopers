@@ -12,6 +12,22 @@
     flex-direction: column;
     align-items: center;
 
+    .formImage_Avatar{
+      z-index: 1;
+      border-radius: 50%;
+    }
+
+    .formImage_Bar{
+      z-index: -1;
+      position: absolute;
+      margin-top: 88px;
+      margin-left: -80px;
+    }
+
+    .formImage_Contact{
+      margin-right: 780px;
+    }
+
     @media (min-width: 1024px) {
       .formImage_Avatar{
         z-index: 1;
@@ -24,10 +40,10 @@
         margin-top: 88px;
         margin-left: -80px;
       }
-    }
 
-    .formImage_Contact{
-      margin-right: 780px;
+      .formImage_Contact{
+        margin-right: 780px;
+      }
     }
   }
 

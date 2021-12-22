@@ -30,7 +30,61 @@
         scroll-behavior: smooth;
         margin-top: -320px;
         margin-left: 2rem;
+        .carrouselCardContent {
+            background: white;
+            flex: none;
+            width: 350px;
+            margin-right: 50px;
+            border-radius: 16px;
+            .carroselHeaderImg {
+                img {
+                    width: 350px;
+                    height: 220px;
+                    border-radius: 16px 16px 0px 0px;
+                }
+            }
+            .carroselHeaderLogo {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: -30px;
+                margin-right: 20px;
+            }
+            .carroselDescription {
+                margin-left: 1rem;
+                button {
+                    font-size: 1.1428571428571428rem;
+                    background: none;
+                    border: 1px solid #9499B3;
+                    border-radius: 25px;
+                    padding: 0.4rem 0.8rem;
+                    color: #9499B3;
+                    font-family: 'Poppins';
+                }
+                p {
+                    color: #42D76B;
+                    font-size: 1.1428571428571428rem;
+                    font-weight: 700;
+                    font-family: 'Poppins';
+                    &:nth-child(2) {
+                        font-family: 'Montserrat';
+                        font-size: 1.2857142857142858rem;
+                        font-weight: 600;
+                        margin-top: 1rem;
+                        color: black;
+                        height: 90px;
+                    }
+                }
+            }
+        }
 
+     @media (min-width: 1024px) {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        margin-top: -320px;
+        // margin-left: 2rem;
+     }
         .carrouselCardContent {
             background: white;
             flex: none;
