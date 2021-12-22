@@ -1,19 +1,26 @@
 .carouselSection {
-    background-color: white;
+    background-color: black;
     display: flex;
     justify-content: center;
+    min-width: 100%;
+
+    @media (min-width: 620px) {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        min-width: 100%;
+    }
 
     .carouselSection_Background{
         background-image: url('../../public/images/background.png');
-        background-size: 1080px 520px;
+        background-size: 650px 320px;
         padding: 10px;
         background-repeat: no-repeat;
         background-position: center;
         border-radius: 10px 10px 10px 10px;
-        width: 900px;
-        height: 520px;
-        margin-top: 68px;
-        margin-left: 120px;
+        width: 650px;
+        height: 320px;
+        margin-top: 100px;
 
         @media (min-width: 620px) {
             background-image: url('../../public/images/background.png');
@@ -22,14 +29,15 @@
             background-repeat: no-repeat;
             background-position: center;
             border-radius: 10px 10px 10px 10px;
-            width: 1080px;
-            height: 520px;
-            margin-top: 68px;
+             width: 900px;
+             height: 520px;
+             margin-top: 68px;
+             margin-left: 120px;
         }
 
         .carouselSwiper {
             padding-top: 40px;
-            padding-left: 10px;
+            padding-left: 100px;
         }
 
         .carouselSection_Paragraph {
@@ -37,8 +45,17 @@
             font-family: 'Montserrat';
             font-weight: bold;
             font-size: 48px;
-            padding-left: 80px;
+            padding-left: 40px;
             padding-top: 80px;
+
+            @media (min-width: 620px) {
+                color: white;
+                font-family: 'Montserrat';
+                font-weight: bold;
+                font-size: 48px;
+                padding-left: 80px;
+                padding-top: 80px;
+            }
         }
 
         .carouselSlide_Cards {
@@ -59,8 +76,6 @@
             width: 360px;
             height: 430px;
           }
-
-
 
             .carouselSlide_Card {
                 z-index: -1;
@@ -92,17 +107,13 @@
                     border: 1px solid #9499B3;
                     max-width: 86px;
                     background-color: black;
-                    // width: 86px;
-                    // height: 31px;
                     color:#9499B3;
                     margin-top: 30px;
                     margin-left: 30px;
-                    // padding: 6px, 12px;
                     border-radius: 16px;
                     font-family: Soleil;
                     font-style: normal;
                     font-weight: normal;
-                    // font-size: 16px;
                 }
 
                 p {

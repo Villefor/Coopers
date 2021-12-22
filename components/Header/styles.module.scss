@@ -1,7 +1,8 @@
 .headerContainer {
     width: 800px;
+
     @media (min-width: 768px) {
-        width: 100%;
+        min-width: 100%;
     }
 
     header {
@@ -13,20 +14,43 @@
         margin: 0 auto;
         margin-bottom: -80px;
 
-        @media (min-width: 768px) {
+        @media (min-width: 1020px) {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            width: 85%;
+            width: 90%;
             margin: 0 auto;
             margin-bottom: -50px;
+
+            h1 {
+                margin-left: 10px;
+                font-size: 1.5rem;
+            }
+
+            button {
+                display: flex;
+                justify-content: center;
+                background: var(--black);
+                color:white;
+                width: 120px;
+                font-size: 1rem;
+                padding: 0.7142857142857143rem 2.857142857142857rem;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 600;
+                line-height: 21px;
+                font-size: 14px;
+                margin-top: 43px;
+                margin-right: -70px;
+            }
         }
 
         .sectionHeader_FirstDiv {
             display: flex;
             align-items: center;
             flex-direction: row;
+            margin-top: 43px;
 
             h1 {
                 margin-left: 10px;
@@ -40,9 +64,16 @@
                 justify-content: center;
                 background: var(--black);
                 color:white;
-                width: 60px;
+                width: 120px;
                 font-size: 1rem;
                 padding: 0.7142857142857143rem 2.857142857142857rem;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 600;
+                line-height: 21px;
+                font-size: 14px;
+                margin-top: 43px;
+                margin-right: -50px;
             }
         }
     }
@@ -79,6 +110,9 @@
                 text-align: start;
                 font-weight: 700;
                 font-size: 4.285714285714286rem;
+                font-family: 'Montserrat';
+                font-weight: 600;
+                line-height: 64px;
             }
             &:nth-child(2){
                 font-family: 'Montserrat';
@@ -87,10 +121,22 @@
                 margin-top: 30px;
                 text-align: start;
             }
+          button {
+            border: none;
+            width: 150px;
+            height: 35px;
+            margin-top: 25px;
+            background: var(--green);
+            color: white;
+            align-items: center;
+            border-radius: 7px;
+          }
         }
+
         .sectionParagraph_Span {
             color: #4AC959;
         }
+
         .headerLink_GoToButton{
             border: none;
             width: 150px;

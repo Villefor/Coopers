@@ -258,10 +258,15 @@
   }
 
   .carouselSwiper{
-    // border: 3px solid black;
     margin-top: 40px;
     div {
-      margin-left: 25px;
+      margin-left: 100px;
+    }
 
+    @media (min-width: 620px) {
+      margin-top: 40px;
+      div {
+        margin-left: 25px;
+      }
     }
   }
