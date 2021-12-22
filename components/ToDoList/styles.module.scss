@@ -62,9 +62,8 @@
     .toDo_Section{
         display:flex;
         flex-direction: column;
-        width: 70%;
-        justify-content: space-evenly;
-        margin-left: 350px;
+        min-width: 100%;
+        align-items: center;
 
         @media (min-width: 768px) {
           display:flex;
@@ -89,8 +88,20 @@
           font-family:'Montserrat';
           font-size: 24px;
           box-shadow: 0px 4px 60px rgba(66, 66, 66, 0.2);
+          margin-bottom: 40px;
+
+          @media (min-width: 768px) {
+          display: flex;
+          align-items: center;
+          text-align: center;
+          flex-direction: column;
+          font-family:'Montserrat';
+          font-size: 24px;
+          box-shadow: 0px 4px 60px rgba(66, 66, 66, 0.2);
           width: 380px;
           height: 320px;
+          margin-top: 40px;
+          }
 
           .toDO_Buttons {
               margin-top: 20px;
