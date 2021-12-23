@@ -24,7 +24,7 @@ function Header() {
               <div className={styles.sectionParagraph_FirstDiv}>
                 <p> Organize <br/> <span className={styles.sectionParagraph_Span}> your daily jobs </span> </p>
                 <p> The only way to get things done</p>
-                <button className={styles.headerLink_GoToButton}> Go to To-do list </button>
+                <Link href="toDo_Sec"><button className={styles.headerLink_GoToButton}> Go to To-do list </button></Link>
               </div>
 
               <div className={styles.sectionParagraph_SecondDiv}>

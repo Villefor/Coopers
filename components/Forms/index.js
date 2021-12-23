@@ -37,7 +37,7 @@ const Forms = () => {
 
               <div>
                 <label className ={ styles.inputLabel }>Email*</label>
-                <input type="email" name="email"  className={ styles.inputFieldEmail} placeholder="example@example.com"/>
+                <input type="email" name="email"  className={ styles.inputFieldEmail} placeholder="example@example.com" required/>
               </div>
 
               <div>
@@ -48,6 +48,7 @@ const Forms = () => {
                     className={ styles.inputField_row }
                     placeholder="(*) - xxxxx xxxx"
                     maxLength="12"
+                    required
                   />
               </div>
 
@@ -57,7 +58,7 @@ const Forms = () => {
           <input type="text" name="user_email"  className={ styles.inputField } placeholder="Please, write about the subject" name="subject"/>
 
           <label>Message*</label>
-          <textarea name="message" placeholder="Please, write your message" name="message"/>
+          <textarea name="message" placeholder="Please, write your message" name="message" required/>
           <input type="submit" value="Send now" className={ styles.inputButtonSend } />
         </form>
       </div>
