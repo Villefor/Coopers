@@ -5,7 +5,8 @@
   margin-top: 250px;
 
   .formContainer {
-    width: 80%;
+    width: 50%;
+    box-shadow: 0px 4px 60px rgb(6 21 43 / 9%);
 
   .formFigure{
     display: flex;
@@ -25,7 +26,7 @@
     }
 
     .formImage_Contact{
-      margin-right: 780px;
+      margin-right: 55%;
     }
 
     @media (min-width: 1024px) {
@@ -42,7 +43,7 @@
       }
 
       .formImage_Contact{
-        margin-right: 780px;
+        margin-right: 55%;
       }
     }
   }
@@ -52,6 +53,7 @@
     margin-top: 16px;
     label {
       display: block;
+      margin-left: 2px;
     }
     input {
       display: flex;
@@ -82,7 +84,7 @@
       border: 0px;
       margin-top: 16px;
       margin-bottom: 5px;
-      margin-right: 92%;
+      margin-right: 86%;
     }
     input {
       font-family: 'Montserrat';

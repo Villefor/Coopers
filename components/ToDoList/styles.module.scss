@@ -111,12 +111,25 @@
         width: 100%;
         align-items: center;
 
+        .toDo_Figures {
+            display: none;
+        }
+
         @media (min-width: 1023px) {
           display:flex;
           flex-direction: row;
           width: 100%;
         //   justify-content: space-evenly;
           margin-left: 50px;
+
+         .toDo_Figures{
+            display: flex;
+            padding-right: 50px;
+            margin-bottom: 20px;
+            img {
+                margin-left: -25px;
+            }
+          }
         }
 
         h2 {

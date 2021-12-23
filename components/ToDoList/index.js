@@ -50,6 +50,10 @@ const handleClick = () => {
 
         <section className={styles.toDo_Section}>
 
+          <figure className={ styles.toDo_Figures }>
+            <img className ={styles.formImage_Contact} src ="/images/aside.png" alt ="aside bar"  />
+          </figure>
+
             <div className={styles.toDo_Div}>
               <img className ={styles.toDo_image} src ="/images/orange_rec.png" alt ="Orange Rectangle"  />
               <h2>To-do</h2>
@@ -77,7 +81,7 @@ const handleClick = () => {
                   </div>
                 </div>
 
-              </div>
+            </div>
               <button className={styles.toDO_Buttons} onClick={handleClick}>Submit</button>
               <button className={styles.toDO_Buttons} onClick={ () => setListTodo([]) }>Erase all</button>
             </div>
@@ -88,7 +92,6 @@ const handleClick = () => {
               <p>Congratulions! <br/> <strong>You have done { count } tasks</strong></p>
               <button onClick={ () => setCount(0) } >Erase all</button>
             </div>
-
         </section>
 
       </section>
