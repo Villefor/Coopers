@@ -93,6 +93,7 @@
             width: 350px;
             margin-right: 50px;
             border-radius: 16px;
+            box-shadow: 2px 1px 2px 2px rgb(66 66 66 / 30%);
             .carroselHeaderImg {
                 img {
                     width: 350px;
@@ -116,6 +117,7 @@
                     padding: 0.4rem 0.8rem;
                     color: #9499B3;
                     font-family: 'Soleil';
+                    font-style: bold;
                 }
                 p {
                     color: #42D76B;
@@ -190,8 +192,11 @@
                     background: white;
                     flex: none;
                     width: 350px;
+                    height: 440px;
                     margin-right: 50px;
                     border-radius: 16px;
+                    box-shadow: 2px 1px 2px 2px rgb(66 66 66 / 30%);
+
                     .carroselHeaderImg {
                         img {
                             width: 350px;
@@ -214,13 +219,14 @@
                             border-radius: 25px;
                             padding: 0.4rem 0.8rem;
                             color: #9499B3;
-                            font-family: 'Poppins';
+                            font-family: 'Soleil';
                         }
                         p {
                             color: #42D76B;
                             font-size: 1.1428571428571428rem;
                             font-weight: 700;
-                            font-family: 'Poppins';
+                            font-family: 'Soleil';
+                            font-style: bold;
                             &:nth-child(2) {
                                 font-family: 'Montserrat';
                                 font-size: 1.2857142857142858rem;

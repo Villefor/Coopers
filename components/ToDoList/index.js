@@ -44,7 +44,7 @@ const handleClick = () => {
          <main className={styles.main}>
           <div className={styles.sectionMain_Div}>
             <h1 className="section-main__h1">To-do List</h1>
-            <p className="section-main__paragraph"> Drag and drop to set your main priorities, check when done and create what's new.</p>
+            <p className="section-main__paragraph"> Drag and drop to set your main priorities, check <br/> when done and create what's new.</p>
           </div>
         </main>
 
