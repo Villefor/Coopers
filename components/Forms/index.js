@@ -31,7 +31,7 @@ const Forms = () => {
 
         <form onSubmit={sendEmail} className={styles.formContent}>
 
-          <label>Name</label>
+          <label className={ styles.formsInput_Label }>Name</label>
           <input type="text" name="user_name" className={ styles.inputField } placeholder="Your name" name="name"/>
             <div className={styles.inputEmailAndTelphone}>
 
@@ -54,10 +54,10 @@ const Forms = () => {
 
             </div>
 
-          <label>Subject</label>
+          <label className={ styles.formsInput_Label } >Subject</label>
           <input type="text" name="user_email"  className={ styles.inputField } placeholder="Please, write about the subject" name="subject"/>
 
-          <label>Message*</label>
+          <label className={ styles.formsInput_Label } >Message*</label>
           <textarea name="message" placeholder="Please, write your message" name="message" required/>
           <input type="submit" value="Send now" className={ styles.inputButtonSend } />
         </form>
