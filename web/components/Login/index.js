@@ -31,7 +31,7 @@ function Login() {
 
   React.useEffect(() => {
     if (task.length === 0) {
-      fetch('http://localhost:10008/wp-json/api/task',  {
+      fetch('http://coopers-word.000webhostapp.com/wp-json/api/task',  {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ function Login() {
 
   //cadastro
   const handleSubmit = () => {
-      fetch('http://localhost:10008/wp-json/api/user',  {
+      fetch('http://coopers-word.000webhostapp.com/wp-json/api/user',  {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ function Login() {
       "email": emailInput,
     };
 
-    fetch('http://localhost:10008/wp-json/jwt-auth/v1/token', {
+    fetch('http://coopers-word.000webhostapp.com/wp-json/jwt-auth/v1/token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ function Login() {
     });
 
 
-    fetch('http://localhost:10008/wp-json/jwt-auth/v1/token/validate', {
+    fetch('http://coopers-word.000webhostapp.com/wp-json/jwt-auth/v1/token/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ function Login() {
         console.log(json)
     });
 
-    fetch('http://localhost:10008/wp-json/api/user', {
+    fetch('http://coopers-word.000webhostapp.com/wp-json/api/user', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const handleTask = () => {
     "task": content,
   };
 
-  fetch('http://localhost:10008/wp-json/api/task',  {
+  fetch('http://coopers-word.000webhostapp.com/wp-json/api/task',  {
   method: 'POST',
   headers: {
       'Content-Type': 'application/json',
