@@ -12,7 +12,7 @@ function ToDoList () {
 
 useEffect(() => {
   if (task.length === 0) {
-    fetch('http://coopers-word.000webhostapp.com/wp-json/api/task',  {
+    fetch('https://coopers-word.000webhostapp.com/wp-json/api/task',  {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const handleTask = () => {
     "task": content,
   };
 
-  fetch('http://coopers-word.000webhostapp.com/wp-json/api/task',  {
+  fetch('https://coopers-word.000webhostapp.com/wp-json/api/task',  {
   method: 'POST',
   headers: {
       'Content-Type': 'application/json',
