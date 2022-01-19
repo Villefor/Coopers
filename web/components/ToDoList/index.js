@@ -9,6 +9,8 @@ function ToDoList () {
 
   const [task, setTasks] = React.useState([]);
   const [count, setCount] = useState(0)
+  const [user, setUser] = useState('')
+  const [test, setTest] = useState([])
 
 useEffect(() => {
   if (task.length === 0) {
@@ -20,11 +22,14 @@ useEffect(() => {
       }).then(response =>{
           console.log(response);
           return response.json ();
-      }).then (json => {setTasks( json )
-        // console.log(json)
+      }).then (json => {
+        setTasks( json )
+        const userActual = localStorage.getItem('user');
+        setUser(userActual)
       });
   }
 }, [task]);
+//console.log(user)
 
 console.log(task)
 
@@ -54,6 +59,12 @@ const handleTask = () => {
   }).then (json =>
     setTasks(...task, json))
 };
+
+  const handleDelete = () => {
+    setTasks([])
+  }
+
+  let contador = 0
 
   return (
       <section className={styles.sectionMain}>
@@ -91,6 +102,7 @@ const handleTask = () => {
                  onChange={ (event) => setContent(event.target.value) }
                  placeholder="Daily assigment"
               />
+
               <button className={styles.toDO_Buttons} onClick={handleTask}>Submit</button>
               <button className={styles.toDO_Buttons} onClick={ () => setTasks([]) }>Erase all</button>
             </div>
@@ -98,22 +110,23 @@ const handleTask = () => {
             <div className={styles.toDoDiv_Done}>
               <img className ={styles.toDo_image} src ="/images/green_rec.png" alt ="Green Rectangle"  />
               <h2>Done</h2>
-              <p>Congratulions! <br/> <strong>You have done tasks</strong></p>
+              <p className={styles.paragraphFirst}>Congratulions! <br/> <strong>You have done {contador} tasks</strong></p>
               {task.length > 0
               ? task.map((posts, index) => {
-
-                  <div key={index}>
-                    <h2 key={index}>{posts.title}</h2>
+                const name = `"${posts.author}"`
+                if(name == user) {
+                  contador += 1
+                return (
+                  <div className={styles.todoContainerText} key={index}>
+                    <h2><img src='/images/complete.svg'/>{posts.title}</h2>
                     <p>{posts.content}</p>
                   </div>
-                  console.log(posts)
-                })
+              )}})
               : null
               }
-              <button onClick={ () => setCount(0) } >Erase all</button>
+              <button onClick={ handleDelete } >Erase all</button>
             </div>
         </section>
-
       </section>
     )
 }

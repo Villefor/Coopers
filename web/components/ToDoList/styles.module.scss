@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-width: 100%;
+    //min-width: 100%;
     // width: 1000px;
 
     main {
@@ -108,8 +108,7 @@
     .toDo_Section{
         display:flex;
         flex-direction: column;
-        width: 100%;
-        align-items: center;
+        margin-bottom: 46px;
 
         .toDo_Figures {
             display: none;
@@ -154,8 +153,9 @@
           flex-direction: column;
           font-family:'Montserrat';
           font-size: 24px;
-          box-shadow: 0px 4px 60px rgba(66, 66, 66, 0.2);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           margin-bottom: 40px;
+          margin-right: 10px;
 
           .toDo_Map {
             display: flex;
@@ -168,7 +168,6 @@
 
             button {
                 background-color: white;
-                border: 1px solid black;
                 background-image: url(../../public/images/question.png);
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -187,23 +186,18 @@
           flex-direction: column;
           font-family:'Montserrat';
           font-size: 24px;
-          box-shadow: 0px 4px 60px rgba(66, 66, 66, 0.2);
-          width: 100%;
-          height: 320px;
-          margin-top: 40px;
+          //width: 100%;
 
             .toDo_Map {
                 display: flex;
                 flex-direction: row;
-                min-width: 100%;
-                width: 100%;
+                //min-width: 100%;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
 
                 button {
                     background-color: white;
-                    border: 1px solid black;
                     background-image: url(../../public/images/question.png);
                     background-repeat: no-repeat;
                     background-size: cover;
@@ -219,7 +213,6 @@
 
           .toDO_Buttons {
               margin-top: 20px;
-              height: 64px;
           }
 
           input {
@@ -253,10 +246,9 @@
             flex-direction: column;
             font-family:'Montserrat';
             font-size: 24px;
-            box-shadow: 0px 4px 60px rgba(66, 66, 66, 0.2);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             // min-width: 100%;
-            width: 100%;
-            height: 320px;
+            //width: 100%;
 
             button {
                 background-color: black;
@@ -265,6 +257,7 @@
                 border-radius:10px;
                 width: 300px;
                 margin-top: 40px;
+                margin-bottom: 40px;
                 height: 64px;
                 font-size: 24px;
             }
@@ -276,9 +269,32 @@
                 flex-direction: column;
                 font-family:'Montserrat';
                 font-size: 24px;
-                box-shadow: 0px 4px 60px rgba(66, 66, 66, 0.2);
-                // width: 380px;
-                // height: 320px;
+                margin-left: 46px;
+                //box-shadow: 0px 4px 60px rgba(66, 66, 66, 0.2);
+
+                .paragraphFirst {
+                    margin-bottom: 20px;
+                }
+
+                .todoContainerText {
+                    width: 100%;
+                    margin-top: 10px;
+                    h2 {
+                        font-size: 16px;
+                        text-align: left;
+                        line-height: 20px;
+                        img {
+                            width: 16px;
+                            margin-right: 16px;
+                            margin-left: 18px;
+                        }
+                    }
+                    p {
+                        font-size: 12px;
+                        text-align: left;
+                        margin-left: 20px;
+                    }
+                }
 
                 button {
                     background-color: black;

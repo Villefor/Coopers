@@ -101,13 +101,20 @@ function Header() {
                 </div>
                 <div className={styles.sectionHeader_SecondDiv}>
                   <button onClick={() => setLogin(true) }> Sign in </button>
-                  <Modal show={showLogin} onClose={()=> setLogin(false)}>
+                  <Modal show={ showLogin } onClose={()=> setLogin(false)}>
                     <section className="login-container">
-                      <div >
-                       <h2 className="title">Sign in </h2>
-                       <h4 className="login-text">to acess your list</h4>
+                      <div className="section-modal_firstDiv">
+                        <div>
+                         <img className ="sign_Icon" src ="/images/sign_Icon.png" alt ="background"  />
+                        </div>
+                        <div>
+                          <h1 className="login-title">Sign in </h1>
+                          <h4 className="login-text">to acess your list</h4>
+                        </div>
                       </div>
                        <div className="buttons">
+                        <label for="email">Email</label>
+                        <br />
                          <input
                          name="email"
                          type="email"
@@ -117,6 +124,8 @@ function Header() {
                          onChange={ (e) => setEmailInput(e.target.value) }
                          className="input-login"
                         />
+                      <br />
+                      <label for="email">User</label>
                       <br />
                       <input
                       name="username"
@@ -128,6 +137,8 @@ function Header() {
                       className="input-login"
                       />
                      <br />
+                     <label for="email">Password</label>
+                     <br />
                      <input
                      name="password"
                      type="password"
@@ -136,32 +147,32 @@ function Header() {
                      onChange={ (e) => setPasswordInput(e.target.value) }
                      className="input-login"
                      />
-                 <div>
-                 <button
-                type="button"
-                disabled={ !(checkEmail() && checkPass() && checkUser()) }
-                onClick={ handleSubmit }
-                className={ `entrar-btn ${!(checkEmail() && checkPass())
-                ? 'disable' : 'enable'}` }
-                >
-                Cadastrar
-                </button>
+                     <div>
+                      <button
+                      type="button"
+                      disabled={ !(checkEmail() && checkPass() && checkUser()) }
+                      onClick={ handleSubmit }
+                      className={ `entrar-btn ${!(checkEmail() && checkPass())
+                      ? 'disable' : 'enable'}` }
+                      >
+                      Cadastrar
+                      </button>
 
-                 <button
-                type="button"
-                disabled={ !(checkEmail() && checkPass() && checkUser()) }
-                onClick={ handleSignIn }
-                className={ `entrar-btn ${!(checkEmail() && checkPass())
-                ? 'disable' : 'enable'}` }
-                >
-                Entrar
-                </button>
-              </div>
-             </div>
-           </section>
-         </Modal>
-       </div>
-      </header>
+                      <button
+                      type="button"
+                      disabled={ !(checkEmail() && checkPass() && checkUser()) }
+                      onClick={ handleSignIn }
+                      className={ `entrar-btn ${!(checkEmail() && checkPass())
+                      ? 'disable' : 'enable'}` }
+                      >
+                      Entrar
+                      </button>
+                     </div>
+                   </div>
+                  </section>
+                 </Modal>
+                </div>
+       </header>
 
             <section className={styles.sectionParagraph}>
 
