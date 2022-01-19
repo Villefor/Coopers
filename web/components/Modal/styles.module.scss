@@ -1,10 +1,45 @@
 .modal {
     background: #fff;
     width: 550px;
-    height: 450px;
     padding: 20px;
     z-index: 100;
-    margin-top: -3200px;
+    margin-top: -2350px;
+}
+
+
+.btn{
+    font-family: 'Montserrat';
+    font-weight: bold;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+@media (max-width: 1024px) {
+    .modal {
+        background: #fff;
+        width: 50%;
+        padding: 20px;
+        z-index: 100;
+        margin-top: -2350px;
+    }
+}
+
+@media (max-width: 664px) {
+    .modal {
+        background: #fff;
+        width: 50%;
+        padding: 20px;
+        z-index: 100;
+        margin-top: -2350px;
+
+        img{
+            display:none;
+        }
+    }
 }
 
 .header {

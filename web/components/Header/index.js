@@ -107,48 +107,48 @@ function Header() {
                         <div>
                          <img className ="sign_Icon" src ="/images/sign_Icon.png" alt ="background"  />
                         </div>
-                        <div>
+                        <div className ="section-modal_secondDiv">
                           <h1 className="login-title">Sign in </h1>
                           <h4 className="login-text">to acess your list</h4>
                         </div>
                       </div>
-                       <div className="buttons">
-                        <label for="email">Email</label>
+                       <div>
+                       <div className="modal-login_inputs">
+                        <label htmlfor="email">Email:</label>
                         <br />
                          <input
                          name="email"
                          type="email"
-                         placeholder="Email"
                          value={ emailInput }
                          autoComplete="none"
                          onChange={ (e) => setEmailInput(e.target.value) }
                          className="input-login"
                         />
-                      <br />
-                      <label for="email">User</label>
-                      <br />
-                      <input
-                      name="username"
-                      type="text"
-                      id="username"
-                      minLength="6"
-                      placeholder="Nome de Usuário"
-                      onChange={ (e) => setUserInput(e.target.value) }
-                      className="input-login"
-                      />
-                     <br />
-                     <label for="email">Password</label>
-                     <br />
-                     <input
-                     name="password"
-                     type="password"
-                     minLength="6"
-                     placeholder="Senha"
-                     onChange={ (e) => setPasswordInput(e.target.value) }
-                     className="input-login"
-                     />
-                     <div>
+                        <br />
+                        <label htmlFor="username">User:</label>
+                        <br />
+                        <input
+                        name="username"
+                        type="text"
+                        id="username"
+                        minLength="6"
+                        onChange={ (e) => setUserInput(e.target.value) }
+                        className="input-login"
+                        />
+                       <br />
+                       <label htmlFor="password">Password:</label>
+                       <br />
+                       <input
+                       name="password"
+                       type="password"
+                       minLength="6"
+                       onChange={ (e) => setPasswordInput(e.target.value) }
+                       className="input-login"
+                       />
+                      </div>
+                     <div className="modal-login_buttons">
                       <button
+                      className="modal_button"
                       type="button"
                       disabled={ !(checkEmail() && checkPass() && checkUser()) }
                       onClick={ handleSubmit }
@@ -159,6 +159,7 @@ function Header() {
                       </button>
 
                       <button
+                      className="modal_button"
                       type="button"
                       disabled={ !(checkEmail() && checkPass() && checkUser()) }
                       onClick={ handleSignIn }
