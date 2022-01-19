@@ -118,7 +118,7 @@ const handleTask = () => {
                   contador += 1
                 return (
                   <div className={styles.todoContainerText} key={index}>
-                    <h2><img src='/images/complete.svg'/>{posts.title}</h2>
+                    <h2><img src='/images/complete.png'/>{posts.title}</h2>
                     <p>{posts.content}</p>
                   </div>
               )}})

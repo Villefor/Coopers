@@ -100,7 +100,7 @@ function Header() {
                   <h1>Coopers</h1>
                 </div>
                 <div className={styles.sectionHeader_SecondDiv}>
-                  <button onClick={() => setLogin(true) }> Sign in </button>
+                 <button onClick={() => setLogin(true) }> Sign in </button>
                   <Modal show={ showLogin } onClose={()=> setLogin(false)}>
                     <section className="login-container">
                       <div className="section-modal_firstDiv">
