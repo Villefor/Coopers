@@ -96,8 +96,7 @@ function Header() {
       <section className={ styles.headerContainer }>
         <header>
                 <div className={styles.sectionHeader_FirstDiv}>
-                  <img src="/images/fill.png" alt="logo"  />
-                  <h1>Coopers</h1>
+                  <img src="/images/fill_logo.png" alt="logo"  />
                 </div>
                 <div className={styles.sectionHeader_SecondDiv}>
                  <button onClick={() => setLogin(true) }> Sign in </button>
@@ -187,9 +186,7 @@ function Header() {
                 <img className={styles.headerImage_BackLogo} src= "/images/coopersLogo.png" alt="background Logo" />
                 <img className ={styles.headerImage_Office}  src ="/images/office.jpg" alt ="Office"  />
               </div>
-
             </section>
-
         </section>
     )
 }

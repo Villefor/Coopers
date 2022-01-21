@@ -4,10 +4,13 @@ import styles from './styles.module.scss'
 function ToDoList () {
 
 
-  const [title, setTitle] = React.useState('');
-  const [content, setContent] = React.useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
-  const [task, setTasks] = React.useState([]);
+  const [array, setArray] = useState([])
+
+
+  const [task, setTasks] = useState([]);
   const [count, setCount] = useState(0)
   const [user, setUser] = useState('')
   const [test, setTest] = useState([])
@@ -33,10 +36,16 @@ useEffect(() => {
 
 console.log(task)
 
-// const handleClick = () => {
-//   setCount(count + 1)
-//   setListTodo([...listTodo, taskName])
-// }
+const handleClick = () => {
+
+  console.log(array)
+  //   return (
+  //     <div className={styles.todoContainerText} key={index}>
+  //       <p><img src='/images/complete.png'/>{taskToDo.titles}</p>
+  //       <p>{taskToDo.contents}</p>
+  //     </div>
+  // )
+}
 
 // tentativa do toDO
 const handleTask = () => {
@@ -64,12 +73,14 @@ const handleTask = () => {
     setTasks([])
   }
 
-  let contador = 0
+  let counts = 0
 
   return (
       <section className={styles.sectionMain}>
-
          <main className={styles.main}>
+          <div>
+            <img className ={ styles.sectionParagraph_scrollIcon } src ="/images/icon_scroll.png" alt ="scroll icon"  />
+          </div>
           <div className={styles.sectionMain_Div}>
             <h1 className="section-main__h1">To-do List</h1>
             <p className="section-main__paragraph"> Drag and drop to set your main priorities, check <br/> when done and create what's new.</p>
@@ -103,19 +114,19 @@ const handleTask = () => {
                  placeholder="Daily assigment"
               />
 
-              <button className={styles.toDO_Buttons} onClick={handleTask}>Submit</button>
+              <button className={styles.toDO_Buttons} onClick={handleClick}>Submit</button>
               <button className={styles.toDO_Buttons} onClick={ () => setTasks([]) }>Erase all</button>
             </div>
 
             <div className={styles.toDoDiv_Done}>
               <img className ={styles.toDo_image} src ="/images/green_rec.png" alt ="Green Rectangle"  />
               <h2>Done</h2>
-              <p className={styles.paragraphFirst}>Congratulions! <br/> <strong>You have done {contador} tasks</strong></p>
+              <p className={styles.paragraphFirst}>Congratulions! <br/> <strong>You have done {count} tasks</strong></p>
               {task.length > 0
               ? task.map((posts, index) => {
                 const name = `"${posts.author}"`
                 if(name == user) {
-                  contador += 1
+                  counts += 1
                 return (
                   <div className={styles.todoContainerText} key={index}>
                     <h2><img src='/images/complete.png'/>{posts.title}</h2>

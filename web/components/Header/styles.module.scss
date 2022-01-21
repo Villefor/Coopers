@@ -29,6 +29,7 @@
                     padding: 0.8rem 2rem;
                     width: 140px;
                 }
+                width: 130px;
                 background: var(--black);
                 color:white;
                 padding: 0.6rem 1.6rem;
@@ -74,12 +75,16 @@
                         text-align: left;
                         font-size: 5rem;
                         line-height: 4rem;
+                        font-style: bold;
+                        font-weight: 900;
                     }
-                    font-weight: 700;
-                    font-size: 2rem;
+                    font-style: bold;
+                    font-weight: 900;
+                    font-size: 4rem;
                     font-family: 'Montserrat';
                     .sectionParagraph_Span {
                         color: #4AC959;
+                        font-weight: 700;
                         @media (min-width: 1024px) {
                             text-align: left;
                             font-size: 3rem;
@@ -150,5 +155,11 @@
                 padding-right: 15%;
             }
         }
+    }
+
+    .sectionParagraph_scrollIcon{
+        border: 2px solid black;
+        z-index: -3;
+        margin-left: 628px;
     }
 }

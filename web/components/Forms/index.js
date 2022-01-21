@@ -37,7 +37,7 @@ const Forms = () => {
 
               <div>
                 <label className ={ styles.inputLabel }>Email*</label>
-                <input type="email" name="email"  className={ styles.inputFieldEmail} placeholder="example@example.com" required/>
+                <input type="email" name="email"  className={ styles.inputField_email} placeholder="example@example.com" required/>
               </div>
 
               <div>
