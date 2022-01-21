@@ -291,7 +291,7 @@
 
     input{
       height:30px ;
-      width: 50%;
+      width: 60%;
     }
 }
 .modal-login_label{
@@ -329,7 +329,8 @@
 
     label{
       font-style: bold;
-      width: 50%;
+      width: 60%;
+      font-size: 14px;
     }
 
     .modal-login_label{
@@ -339,7 +340,7 @@
 
     input{
       height:30px ;
-      width: 50%;
+      width: 60%;
     }
   }
 
@@ -354,7 +355,7 @@
       margin-top: 10px;
       background-color: #4AC959;
       color:#FFFFFF;
-      width:40%;
+      width:50%;
       height: 35px;
       font-family: 'Montserrat';
       font-weight: bold;
@@ -377,9 +378,10 @@
     label{
       font-weight: 600;
       font-family: 'Montserrat';
-      margin-right: 10%;
+      // margin-right: 10%;
+      width:60%;
       color: rgba(0, 0, 0, 1);
-      font-size: 12px;
+      font-size: 24px;
     }
 
     input{
@@ -387,6 +389,7 @@
       border: 1px solid #959595;
       border-radius: 3px;
       padding-left: 2%;
+      width: 60%;
     }
   }
 
@@ -400,7 +403,7 @@
       margin-top: 10px;
       background-color: #4AC959;
       color:#FFFFFF;
-      width:40%;
+      width:50%;
       height: 35px;
       font-family: 'Montserrat';
       font-weight: bold;
