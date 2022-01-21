@@ -288,14 +288,40 @@
       width: 180px;
       height: 180px;
     }
-  //  .modal-login_buttons {
 
-  //  }
-  //  .modal_button{
-
-  //  }
+    input{
+      height:30px ;
+      width: 50%;
+    }
 }
+.modal-login_label{
+  margin-top: 2%;
+  font-weight: 900;
+  width: 35%;
+  font-style: bold;
+  font-size: 24px;
+}
+
+
 @media (max-width: 1024px) {
+  .section-modal_firstDiv{
+    display: flex;
+    flex-direction: row;
+
+    h1{
+      font-size: 30px;
+      font-family: "Montserrat";
+    }
+    h4 {
+      font-size:20px;
+      font-family: "Montserrat";
+      color: #4AC959;
+    }
+    img{
+      width: 180px;
+      height: 180px;
+    }
+  }
   .modal-login_inputs{
     display: flex;
     flex-direction: column;
@@ -303,12 +329,17 @@
 
     label{
       font-style: bold;
-      margin-right: 120px;
+      width: 50%;
+    }
+
+    .modal-login_label{
+      margin-top: 2%;
+      font-weight: 900;
     }
 
     input{
       height:30px ;
-
+      width: 50%;
     }
   }
 
@@ -328,6 +359,11 @@
       font-family: 'Montserrat';
       font-weight: bold;
     }
+    button:hover{
+      box-shadow: 0 40px 12px rgba(70,150,240,0.25) inset, 0 -40px 12px rgba(70,150,240,0.25) inset;
+      border: 1px solid rgba(255,255,255,1);
+      color: black
+    }
   }
 
 }
@@ -339,9 +375,11 @@
     align-items: center;
 
     label{
-      font-weight: bold;
+      font-weight: 600;
       font-family: 'Montserrat';
-      margin-right: 150px;
+      margin-right: 10%;
+      color: rgba(0, 0, 0, 1);
+      font-size: 12px;
     }
 
     input{
@@ -366,6 +404,12 @@
       height: 35px;
       font-family: 'Montserrat';
       font-weight: bold;
+      border: 1px solid
+    }
+    button:hover{
+      box-shadow: 0 40px 12px rgba(70,150,240,0.25) inset, 0 -40px 12px rgba(70,150,240,0.25) inset;
+      border: 1px solid rgba(255,255,255,1);
+      color: black
     }
   }
 }

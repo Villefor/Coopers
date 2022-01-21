@@ -109,7 +109,6 @@
         display:flex;
         flex-direction: column;
         margin-bottom: 46px;
-
         .toDo_Figures {
             display: none;
         }
@@ -156,6 +155,52 @@
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           margin-bottom: 40px;
           margin-right: 10px;
+
+          .taskTodosContainer {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              margin-top: 16px;
+              margin-left: 80px;
+              .buttonSendToDone {
+                width: 25px;
+                height: 25px;
+                  background: none;
+                  border: 2px solid #E88D39;
+                  border-radius: 100%;
+              }
+              p {
+                margin-left: 12px;
+              }
+          }
+
+          .todoMakeContainer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+            margin-left: 80px;
+
+                .createNewTask {
+                    width: 25px;
+                    height: 25px;
+                    border: 2px solid #A1A1A1;
+                    border-radius: 100%;
+                    background: none;
+                }
+
+                .toDoInput_title {
+                    margin-top: 0px;
+                    margin-left: 6px;
+                    font-weight: bold;
+                }
+                .toDoInput_title:focus {
+                    outline: none;
+                    background-color: white;
+                    border: 2px solid #A1A1A1;
+                    border-radius: 6px;
+                }
+            }
 
           .toDo_Map {
             display: flex;
@@ -224,7 +269,7 @@
               padding-left: 2%;
           }
 
-          button {
+          .toDO_Buttons {
               background-color: black;
               color:white;
               border: none;
@@ -234,9 +279,13 @@
               height: 64px;
               font-size: 24px;
 
+              transition: 0.2ms;
               &:first-child{
                 line-height: 80px;
               }
+          }
+          .toDO_Buttons:hover {
+              filter: brightness(0.8);
           }
         }
 

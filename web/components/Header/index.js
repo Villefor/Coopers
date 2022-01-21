@@ -113,7 +113,7 @@ function Header() {
                       </div>
                        <div>
                        <div className="modal-login_inputs">
-                        <label htmlfor="email">Email:</label>
+                        <label className="modal-login_label" htmlfor="email">Email:</label>
                         <br />
                          <input
                          name="email"
@@ -124,7 +124,7 @@ function Header() {
                          className="input-login"
                         />
                         <br />
-                        <label htmlFor="username">User:</label>
+                        <label className="modal-login_label" htmlFor="username">User:</label>
                         <br />
                         <input
                         name="username"
@@ -135,7 +135,7 @@ function Header() {
                         className="input-login"
                         />
                        <br />
-                       <label htmlFor="password">Password:</label>
+                       <label className="modal-login_label" htmlFor="password">Password:</label>
                        <br />
                        <input
                        name="password"
@@ -179,13 +179,15 @@ function Header() {
               <div className={styles.sectionParagraph_FirstDiv}>
                 <p> Organize <br/> <span className={styles.sectionParagraph_Span}> your daily jobs </span> </p>
                 <p> The only way to get things done</p>
-                <Link href="toDo_Sec"><button className={styles.headerLink_GoToButton}> Go to To-do list </button></Link>
+                <Link href="#toDo_Sec"><button className={styles.headerLink_GoToButton}> Go to To-do list </button></Link>
               </div>
 
               <div className={styles.sectionParagraph_SecondDiv}>
                 <img className={styles.headerImage_BackLogo} src= "/images/coopersLogo.png" alt="background Logo" />
                 <img className ={styles.headerImage_Office}  src ="/images/office.jpg" alt ="Office"  />
               </div>
+
+
             </section>
         </section>
     )
