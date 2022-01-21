@@ -20,34 +20,36 @@
     .formImage_Avatar{
       z-index: 1;
       border-radius: 50%;
+      margin-top: -100px;
     }
 
     .formImage_Bar{
       z-index: -1;
       position: absolute;
-      margin-top: 88px;
+      margin-top: -13px;
       margin-left: -80px;
     }
 
     .formImage_Contact{
-      margin-right: 55%;
+      margin-right: 7%;
     }
 
     @media (min-width: 1024px) {
       .formImage_Avatar{
         z-index: 1;
         border-radius: 50%;
+        margin-top: -100px;
       }
 
       .formImage_Bar{
         z-index: -1;
         position: absolute;
-        margin-top: 88px;
+        margin-top: -13px;
         margin-left: -80px;
       }
 
       .formImage_Contact{
-        margin-right: 55%;
+        margin-right: 40%;
       }
     }
   }
@@ -138,11 +140,32 @@
           // margin-right: 2%;
           .inputField_row{
             width: 100%;
-            background-color:black;
+            padding-left: 2%;
+          }
+          .inputField_email{
+            width: 95%;
+            padding-left: 2%;
+          }
+        }
+      }
+
+      @media (max-width: 1024px) {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        align-items: center;
+        div {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          // margin-right: 2%;
+          .inputField_row{
+            width: 100%;
+            padding-left: 2%;
           }
           .inputField_email{
             width: 100%;
-            background-color:black;
+            padding-left: 2%;
           }
         }
       }
@@ -154,11 +177,14 @@
     background: #46BD62;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: white;
-    font-weight: 700;
+    color: #FDFEFF;
     margin-top: 40px;
     border: transparent;
     margin-bottom: 100px;
+    font-weight: 900;
+    transform:scale(.9);
+    box-shadow: 0px 13px 16px 0px rgba(6, 21, 43, 0.12);
   }
+
 }
 }

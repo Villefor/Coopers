@@ -28,8 +28,8 @@ function Carousel () {
     },
 
     {
-        description: 'Teams are meant to be together, to be in touch.',
-        image: "/images/card_5.png",
+      description: 'Teams are meant to be together, to be in touch.',
+      image: "/images/card_5.png",
     },
 
     {
