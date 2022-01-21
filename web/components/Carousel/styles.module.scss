@@ -94,7 +94,7 @@
             width: 350px;
             margin-right: 50px;
             border-radius: 16px;
-            box-shadow: 2px 4px 2px 2px rgb(12 41 20 / 8%);
+            box-shadow: 2px 1px 2px 2px rgb(66 66 66 / 30%);
             .carroselHeaderImg {
                 img {
                     width: 350px;
@@ -125,16 +125,18 @@
                     font-size: 1.1428571428571428rem;
                     font-weight: 700;
                     font-family: 'Soleil';
-                    margin-top: 18px;
                     &:nth-child(2) {
                         font-family: 'Montserrat';
                         font-size: 1.2857142857142858rem;
                         font-weight: 600;
                         margin-top: 1rem;
                         color: black;
-                        height: 90px;
-                        margin-top: 8%;
                     }
+                }
+                .readMoreText {
+                    margin-bottom: 20px;
+                    margin-top: 30px;
+                    margin-left: 5%;
                 }
             }
         }
@@ -152,12 +154,26 @@
             border-radius: 50%;
             margin-left: 10px;
         }
+        .firstButtonBlock {
+            background: #c0c0c0;
+            cursor: not-allowed;
+        }
+        .firstButtonOpen {
+            background: #4AC959;
+        }
+        .lastButtonBlock {
+            background: #c0c0c0;
+            cursor: not-allowed;
+        }
+        .lastButtonOpen {
+            background: #4AC959;
+        }
     }
   }
 
     @media (min-width: 1024px) {
         .carouselSection_Background {
-            height: 520px;
+            //height: 520px;
             background: #4AC959;
             width: 90%;
             margin: 0 auto;
@@ -195,10 +211,11 @@
                     background: white;
                     flex: none;
                     width: 350px;
-                    height: 440px;
+                    //height: 440px;
                     margin-right: 50px;
                     border-radius: 16px;
-                    box-shadow: 2px 4px 2px 2px rgb(12 41 20 / 8%);
+                    box-shadow: 2px 1px 2px 2px rgb(66 66 66 / 30%);
+
                     .carroselHeaderImg {
                         img {
                             width: 350px;
@@ -271,7 +288,6 @@
                         padding: 0.4rem 0.8rem;
                         color: #9499B3;
                         font-family: 'Soleil';
-                        // margin-left: -10%;
                     }
                     p {
                         color: #42D76B;
@@ -284,7 +300,6 @@
                             font-weight: 600;
                             margin-top: 1rem;
                             color: black;
-                            height: 90px;
                             padding-right: 5%;
                             padding-left: 5%;
                         }
@@ -301,7 +316,7 @@
                 height: 25px;
                 border: none;
                 margin-right: 10px;
-                background: #4AC959;
+                //background: #4AC959;
                 border-radius: 50%;
             }
         }

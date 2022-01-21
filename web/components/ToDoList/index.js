@@ -104,81 +104,84 @@ function ToDoList() {
       </main>
 
       <section className={styles.toDo_Section} id="toDo_Sec">
-        <figure className={styles.toDo_Figures}>
-          <img
-            className={styles.formImage_Contact}
-            src="/images/aside.png"
-            alt="aside bar"
-          />
-        </figure>
-
-        <div className={styles.toDo_Div}>
-          <img
-            className={styles.toDo_image}
-            src="/images/orange_rec.png"
-            alt="Orange Rectangle"
-          />
-          <h2>To-do</h2>
-          <p>
-            Take a breath. <br /> Start doing.
-          </p>
-
-          <div className={styles.todoMakeContainer}>
-            <button
-              className={styles.createNewTask}
-              onClick={createTask(title)}
-            >
-              <img src="/images/create_task_item.png" />
-            </button>
-
-            <input
-              id="toDO_Sec"
-              className={styles.toDoInput_title}
-              type="text"
-              onChange={(event) => setTitle(event.target.value)}
-              placeholder="Add new here..."
+        <div className={styles.picturesLeft}>
+          <figure className={styles.toDo_Figures}>
+            <img
+              className={styles.formImage_Contact}
+              src="/images/aside.png"
+              alt="aside bar"
             />
-            {/*  <input
+          </figure>
+        </div>
+
+        <div className={styles.divContainerCards}>
+          <div className={styles.toDo_Div}>
+            <img
+              className={styles.toDo_image}
+              src="/images/orange_rec.png"
+              alt="Orange Rectangle"
+            />
+            <h2>To-do</h2>
+            <p>
+              Take a breath. <br /> Start doing.
+            </p>
+
+            <div className={styles.todoMakeContainer}>
+              <button
+                className={styles.createNewTask}
+                onClick={createTask(title)}
+              >
+                <img src="/images/create_task_item.png" />
+              </button>
+
+              <input
+                id="toDO_Sec"
+                className={styles.toDoInput_title}
+                type="text"
+                onChange={(event) => setTitle(event.target.value)}
+                placeholder="Add new here..."
+              />
+              {/*  <input
               id="toDO_Sec"
               className={styles.toDoInput}
               type="text"
               onChange={(event) => setContent(event.target.value)}
               placeholder="Daily assigment"
             /> */}
+            </div>
+            {taskTodo.map((item, index) => {
+              return (
+                <div key={index} className={styles.taskTodosContainer}>
+                  <button
+                    className={styles.buttonSendToDone}
+                    onClick={sendToDone(index)}
+                    name={item}
+                  />
+                  <p>{item}</p>
+                </div>
+              );
+            })}
+
+            <button
+              className={styles.toDO_Buttons}
+              onClick={() => setTaskTodo([])}
+            >
+              Erase all
+            </button>
           </div>
-          {taskTodo.map((item, index) => {
-            return (
-              <div key={index} className={styles.taskTodosContainer}>
-                <button
-                  className={styles.buttonSendToDone}
-                  onClick={sendToDone(index)}
-                  name={item}
-                />
-                <p>{item}</p>
-              </div>
-            );
-          })}
 
-          <button
-            className={styles.toDO_Buttons}
-            onClick={() => setTaskTodo([])}
-          >
-            Erase all
-          </button>
-        </div>
-
-        <div className={styles.toDoDiv_Done}>
-          <img
-            className={styles.toDo_image}
-            src="/images/green_rec.png"
-            alt="Green Rectangle"
-          />
-          <h2>Done</h2>
-          <p className={styles.paragraphFirst}>
-            Congratulions! <br />{" "}
-            <strong>You have done {taskDone.length} tasks</strong>
-          </p>
-          {/*           {task.length > 0
+          <div className={styles.toDoDiv_Done}>
+            <img
+              className={styles.toDo_image}
+              src="/images/green_rec.png"
+              alt="Green Rectangle"
+            />
+            <h2>Done</h2>
+            <p className={styles.paragraphFirst}>
+              Congratulions! <br />{" "}
+              <strong>You have done {taskDone.length} tasks</strong>
+            </p>
+            {/*           {task.length > 0
             ? task.map((posts, index) => {
                 const name = `"${posts.author}"`;
                 if (name == user) {
@@ -195,17 +198,18 @@ function ToDoList() {
                 }
               })
             : null} */}
-          {taskDone.map((item, index) => {
-            return (
-              <div className={styles.todoContainerText} key={index}>
-                <h2>
-                  <img src="/images/complete.png" />
-                  {item}
-                </h2>
-              </div>
-            );
-          })}
-          <button onClick={() => setTaskDone([])}>Erase all</button>
+            {taskDone.map((item, index) => {
+              return (
+                <div className={styles.todoContainerText} key={index}>
+                  <h2>
+                    <img src="/images/complete.png" />
+                    {item}
+                  </h2>
+                </div>
+              );
+            })}
+            <button onClick={() => setTaskDone([])}>Erase all</button>
+          </div>
         </div>
       </section>
     </section>

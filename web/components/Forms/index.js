@@ -2,21 +2,29 @@ import React from 'react';
 import emailjs from 'emailjs-com';
 import styles from './styles.module.scss'
 
+
+
 const Forms = () => {
+
+  const [errors, setError] = React.useState(false);
 
   const sendEmail = (event) => {
     event.preventDefault();
-
-    emailjs.sendForm('gmail', 'coopers_template', event.target, 'user_UJwTBtiihcWWvri6q5IJP')
-      .then((result) => {
-          console.log(result.text);
-          alert("E-mail sent successfully");
-      }, (error) => {
-          console.log(error.text);
-          alert("Something went wrong")
-      });
-      event.target.reset()
+    try {
+      emailjs.sendForm('gmail', 'coopers_template', event.target, 'user_UJwTBtiihcWWvri6q5IJP')
+        .then((result) => {
+            console.log(result.text);
+            alert("E-mail sent successfully");
+        }, (error) => {
+            console.log(error.text);
+        });
+        event.target.reset()
+    }
+    catch (error) {
+      setError(error.text)
+    }
   };
+
 
   return (
     <section onSubmit={sendEmail} className={ styles.formsSection }>
@@ -60,6 +68,9 @@ const Forms = () => {
           <label className={ styles.formsInput_Label } >Message*</label>
           <textarea name="message" placeholder="Please, write your message" name="message" required/>
           <input type="submit" value="Send now" className={ styles.inputButtonSend } />
+          {errors &&
+            <p>{errors}</p>
+          }
         </form>
       </div>
     </section>
