@@ -24,6 +24,8 @@
 
   body {
     background: var(--gray-50);
+    overflow-y: scroll;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -265,9 +267,6 @@
 
     @media (min-width: 768px) {
       margin-top: 40px;
-      div {
-        // margin-left: 80px;
-      }
     }
   }
 

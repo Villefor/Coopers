@@ -1,27 +1,30 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styles from './styles.module.scss'
-// import 'swiper/css'
-// import 'swiper/css/pagination'
-import Carousel from 'react-multi-carousel'
-import 'react-multi-carousel/lib/styles.css'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
-function Carousels(props) {
+function Carousel() {
+  const carousel = useRef(null)
+
   const [page, setPage] = useState(0)
+
+  const [firstButton, setFirstButton] = useState(true)
+
+  const [lastButton, setLastButton] = useState(false)
 
   const [images, setImages] = useState([])
 
+  console.log(images)
   const info = [
     {
       description: 'Organize your daily job enhance your life performance',
-      image: '/images/card_1.png',
-      // imageurl: `https://dario.marbr.net/wp-content/uploads/2022/02/card_1.png`,
+      image: `https://dario.marbr.net/wp-content/uploads/2022/02/card_1.png`,
     },
 
     {
       description:
         'Mark one activity as done makes your brain understands the power of doing.',
-      image: '/images/card_2.png',
-      // imageurl: 'https://dario.marbr.net/wp-content/uploads/2022/02/card_2.png',
+      image: 'https://dario.marbr.net/wp-content/uploads/2022/02/card_2.png',
     },
 
     {
@@ -57,30 +60,10 @@ function Carousels(props) {
     },
 
     {
-      description: 'Planning acordingly to your desires and fits.',
+      description: 'Planning acordingly your desires and fits.',
       image: '/images/card_9.png',
     },
   ]
-
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 765 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 765, min: 0 },
-      items: 1,
-    },
-  }
 
   useEffect(() => {
     if (images.length === 0) {
@@ -92,12 +75,11 @@ function Carousels(props) {
           },
         })
           .then((response) => {
-            // console.log(response)
+            console.log(response)
             return response.json()
           })
           .then((json) => {
-            const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
-            setImages(acf)
+            console.log(json), setImages(json.acf)
           })
       }
       get_photos_api()
@@ -106,37 +88,43 @@ function Carousels(props) {
 
   console.log(images)
 
+  const handleLeftClick = (event) => {
+    event.preventDefault()
+    setPage(page <= 1)
+    console.log(page)
+    setLastButton(false)
+    if (page <= 0) {
+      setPage(0)
+      setFirstButton(true)
+    }
+    carousel.current.scrollLeft -= carousel.current.offsetWidth
+  }
+
+  const handleRightClick = (event) => {
+    event.preventDefault()
+    setPage(page + 1)
+    setFirstButton(false)
+    if (page >= 1) {
+      setPage(2)
+      setLastButton(true)
+    }
+    carousel.current.scrollLeft += carousel.current.offsetWidth
+  }
+
   return (
     <section className={styles.carouselSection}>
       <div className={styles.carouselSection_Background}>
         <p className={styles.carouselSection_Paragraph}>good things</p>
       </div>
-      {/* <div className={styles.carrouselCardContainer}> */}
-      <Carousel
-        showDots
-        focusOnSelect={true}
-        infinite={true}
-        slidesToSlide={3}
-        arrows={false}
-        swipeable={true}
-        draggable={false}
-        showDots={true}
-        responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
-        infinite={true}
-        keyBoardControl={true}
-        customTransition='all .5'
-        containerClass={styles.carrouselCardContainer}
-        removeArrowOnDeviceType={['tablet', 'mobile']}
-        dotListClass='custom-dot-list-style'
-        itemClass='carousel-item-padding-40-px'
-      >
-        {images !== 0
-          ? images.map((item, index) => {
+
+      <div className={styles.carrouselCardContainer} ref={carousel}>
+        {images.length !== 0
+          ? Object.values(images).map((item, index) => {
+              console.log(item)
               return (
                 <div key={index} className={styles.carrouselCardContent}>
                   <div className={styles.carroselHeaderImg}>
-                    <img key={index} src={item.img} />
+                    <img key={index} src={item} />
                   </div>
                   <div className={styles.carroselHeaderLogo}>
                     <img src='/images/icon_coopers.png' />
@@ -150,11 +138,23 @@ function Carousels(props) {
               )
             })
           : null}
-      </Carousel>
-      {/* </div> */}
-      <div className={styles.buttonsCarrousel}></div>
+      </div>
+      <div className={styles.buttonsCarrousel}>
+        <button
+          onClick={handleLeftClick}
+          className={
+            firstButton ? styles.firstButtonBlock : styles.firstButtonOpen
+          }
+        ></button>
+        <button
+          onClick={handleRightClick}
+          className={
+            lastButton ? styles.lastButtonBlock : styles.lastButtonOpen
+          }
+        ></button>
+      </div>
     </section>
   )
 }
 
-export default Carousels
+export default Carousel
