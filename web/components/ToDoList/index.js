@@ -4,17 +4,15 @@ import styles from './styles.module.scss'
 function ToDoList() {
   const [title, setTitle] = useState('')
 
-  const [load, setLoad] = useState([])
+  const [task_done, setTaskDone] = useState([])
 
-  const [taskDone, setTaskDone] = useState([])
-
-  const [taskTodo, setTaskTodo] = useState([])
-
-  const [post_id, setPostID] = useState([])
-
-  const [user, setUser] = useState(0)
+  const [task_todo, setTaskTodo] = useState([])
 
   const [post, setPosts] = useState([])
+
+  const [list_images, setListImages] = useState([])
+
+  const [task_list_text, setTaskText] = useState([])
 
   useEffect(() => {
     const get_posts = async () => {
@@ -25,11 +23,9 @@ function ToDoList() {
         },
       })
         .then((response) => {
-          console.log(response)
           return response.json()
         })
         .then((json) => {
-          console.log(json)
           setPosts(json)
           setTaskDone(json)
         })
@@ -37,7 +33,45 @@ function ToDoList() {
     get_posts()
   }, [])
 
-  const sendToDone = (index) => async (event) => {
+  useEffect(() => {
+    const get_images_api = async () => {
+      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/406', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((json) => {
+          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
+          setListImages(acf)
+        })
+    }
+    get_images_api()
+  }, [])
+
+  useEffect(() => {
+    const get_text_api = async () => {
+      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/51', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((json) => {
+          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
+          setTaskText(acf)
+        })
+    }
+    get_text_api()
+  }, [])
+
+  const send_to_done = (index) => async (event) => {
     const taskInfo = {
       title: title,
     }
@@ -55,7 +89,7 @@ function ToDoList() {
       })
       .then((json) => {
         setTaskDone([
-          ...taskDone,
+          ...task_done,
           {
             id: json.id,
             title: json.post_title,
@@ -63,15 +97,15 @@ function ToDoList() {
         ])
       })
       .catch((err) => alert('error' + err))
-    taskTodo.splice(index, 1)
+    task_todo.splice(index, 1)
   }
 
-  const createTask = (nome) => () => {
-    setTaskTodo([...taskTodo, nome])
+  const create_task = (nome) => () => {
+    setTaskTodo([...task_todo, nome])
   }
 
   const delete_task = async () => {
-    taskDone.map(async (item) => {
+    task_done.map(async (item) => {
       return fetch(`https://dario.marbr.net/wp-json/api/task/${item.id}`, {
         method: 'DELETE',
         headers: {
@@ -80,7 +114,6 @@ function ToDoList() {
         },
       })
         .then((response) => {
-          console.log(response)
           return response.json()
         })
         .then((json) => console.log(json))
@@ -88,34 +121,31 @@ function ToDoList() {
     setTaskDone([])
   }
 
-  let counts = 0
-
   return (
     <section className={styles.sectionMain}>
-      <main className={styles.main}>
-        <div>
+      <article className={styles.main}>
+        <figure>
           <img
             className={styles.sectionParagraph_scrollIcon}
-            src='/images/icon_scroll.png'
+            src={list_images[13]}
             alt='scroll icon'
           />
-        </div>
+        </figure>
         <div className={styles.sectionMain_Div}>
-          <h1 className='section-main__h1'>To-do List</h1>
+          <h1 className='section-main__h1'>{task_list_text[10]}</h1>
           <p className='section-main__paragraph'>
             {' '}
-            Drag and drop to set your main priorities, check <br /> when done
-            and create what's new.
+            {task_list_text[11]} <br /> {task_list_text[12]}
           </p>
         </div>
-      </main>
+      </article>
 
       <section className={styles.toDo_Section} id='toDo_Sec'>
         <div className={styles.picturesLeft}>
           <figure className={styles.toDo_Figures}>
             <img
               className={styles.formImage_Contact}
-              src='/images/aside.png'
+              src={list_images[13]}
               alt='aside bar'
             />
           </figure>
@@ -125,18 +155,18 @@ function ToDoList() {
           <div className={styles.toDo_Div}>
             <img
               className={styles.toDo_image}
-              src='/images/orange_rec.png'
+              src={list_images[4]}
               alt='Orange Rectangle'
             />
-            <h2>To-do</h2>
+            <h2>{task_list_text[13]}</h2>
             <p>
-              Take a breath. <br /> Start doing.
+              {task_list_text[14]} <br /> {task_list_text[15]}
             </p>
 
             <div className={styles.todoMakeContainer}>
               <button
                 className={styles.createNewTask}
-                onClick={createTask(title)}
+                onClick={create_task(title)}
               >
                 <img src='/images/create_task_item.png' />
               </button>
@@ -150,12 +180,12 @@ function ToDoList() {
               />
             </div>
 
-            {taskTodo.map((item, index) => {
+            {task_todo.map((item, index) => {
               return (
                 <div key={index} className={styles.taskTodosContainer}>
                   <button
                     className={styles.buttonSendToDone}
-                    onClick={sendToDone(index)}
+                    onClick={send_to_done(index)}
                     name={item}
                   />
                   <p>{item}</p>
@@ -167,41 +197,43 @@ function ToDoList() {
               className={styles.toDO_Buttons}
               onClick={() => setTaskTodo([])}
             >
-              Erase all
+              {task_list_text[16]}
             </button>
           </div>
 
           <div className={styles.toDoDiv_Done}>
             <img
               className={styles.toDo_image}
-              src='/images/green_rec.png'
+              src={list_images[5]}
               alt='Green Rectangle'
             />
-            <h2>Done</h2>
-            {taskDone.length !== 0 ? (
+            <h2>{task_list_text[17]}</h2>
+            {task_done.length !== 0 ? (
               <p className={styles.paragraphFirst}>
-                Congratulions! <br />{' '}
-                <strong>You have done {taskDone.length} tasks</strong>
+                {task_list_text[18]} <br />{' '}
+                <strong>
+                  {task_list_text[19]} {task_done.length} {task_list_text[20]}
+                </strong>
               </p>
             ) : (
               <p className={styles.paragraphFirst}>
-                <strong>Waiting for your tasks </strong>
+                <strong>{task_list_text[21]} </strong>
               </p>
             )}
 
-            {taskDone.length !== 0
-              ? taskDone.map((item, index) => {
+            {task_done.length !== 0
+              ? task_done.map((item, index) => {
                   return (
                     <div className={styles.todoContainerText} key={index}>
                       <h2>
-                        <img src='/images/complete.png' />
+                        <img src={list_images[9]} />
                         {item.title}
                       </h2>
                     </div>
                   )
                 })
               : null}
-            <button onClick={delete_task}>Erase all</button>
+            <button onClick={delete_task}>{task_list_text[22]}</button>
           </div>
         </div>
       </section>

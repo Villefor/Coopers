@@ -14,6 +14,10 @@ function Header() {
 
   const [logout, setLogOut] = React.useState(false)
 
+  const [header_images, setHeaderImages] = React.useState([])
+
+  const [header_content, setHeaderContent] = React.useState([])
+
   const checkEmail = () =>
     /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(emailInput)
 
@@ -30,6 +34,44 @@ function Header() {
       setLogOut(true)
     }
   }, [logout])
+
+  useEffect(() => {
+    const get_images_api = async () => {
+      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/406', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((json) => {
+          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
+          setHeaderImages(acf)
+        })
+    }
+    get_images_api()
+  }, [])
+
+  useEffect(() => {
+    const get_text_api = async () => {
+      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/51', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((json) => {
+          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
+          setHeaderContent(acf)
+        })
+    }
+    get_text_api()
+  }, [])
 
   const handle_logout = () => {
     localStorage.clear()
@@ -52,7 +94,6 @@ function Header() {
       body: JSON.stringify(body),
     })
       .then((response) => {
-        console.log(response)
         return response.json()
       })
       .then((json) => console.log(json), alert('Welcome!'))
@@ -76,7 +117,6 @@ function Header() {
       body: JSON.stringify(userInfo),
     })
       .then((response) => {
-        console.log(response)
         return response.json()
       })
       .then((json) => {
@@ -96,7 +136,6 @@ function Header() {
       },
     })
       .then((response) => {
-        console.log(response)
         return response.json()
       })
       .then((json) => {
@@ -113,7 +152,6 @@ function Header() {
       },
     })
       .then((response) => {
-        console.log(response)
         return response.json()
       })
       .then(
@@ -134,28 +172,31 @@ function Header() {
   return (
     <div className={styles.headerContainer}>
       <header>
-        <div className={styles.sectionHeader_FirstDiv}>
-          <img src='/images/fill_logo.png' alt='logo' />
-        </div>
+        <figure className={styles.sectionHeader_FirstDiv}>
+          <img src={header_images[0]} alt='logo' />
+        </figure>
         <div className={styles.sectionHeader_SecondDiv}>
           {logout ? (
-            <button onClick={handle_logout}> LogOut </button>
+            <button onClick={handle_logout}> {header_content[1]} </button>
           ) : (
-            <button onClick={() => setLogin(true)}> Sign in </button>
+            <button onClick={() => setLogin(true)}>
+              {' '}
+              {header_content[0]}{' '}
+            </button>
           )}
           <Modal show={showLogin} onClose={() => setLogin(false)}>
             <section className='login-container'>
               <div className='section-modal_firstDiv'>
-                <div>
+                <figure>
                   <img
                     className='sign_Icon'
-                    src='/images/sign_Icon.png'
+                    src={header_images[12]}
                     alt='background'
                   />
-                </div>
+                </figure>
                 <div className='section-modal_secondDiv'>
-                  <h1 className='login-title'>Sign in </h1>
-                  <h4 className='login-text'>to acess your list</h4>
+                  <h1 className='login-title'>{header_content[2]} </h1>
+                  <h4 className='login-text'>{header_content[3]}</h4>
                 </div>
               </div>
               <div>
@@ -208,7 +249,7 @@ function Header() {
                       !(checkEmail() && checkPass()) ? 'disable' : 'enable'
                     }`}
                   >
-                    Cadastrar
+                    {header_content[4]}
                   </button>
 
                   <button
@@ -220,7 +261,7 @@ function Header() {
                       !(checkEmail() && checkPass()) ? 'disable' : 'enable'
                     }`}
                   >
-                    Entrar
+                    {header_content[5]}
                   </button>
                 </div>
               </div>
@@ -233,17 +274,17 @@ function Header() {
         <div className={styles.sectionParagraph_FirstDiv}>
           <p>
             {' '}
-            Organize <br />{' '}
+            {header_content[6]} <br />{' '}
             <span className={styles.sectionParagraph_Span}>
               {' '}
-              your daily jobs{' '}
+              {header_content[7]}{' '}
             </span>{' '}
           </p>
-          <p> The only way to get things done</p>
+          <p> {header_content[8]}</p>
           <Link href='#toDo_Sec'>
             <button className={styles.headerLink_GoToButton}>
               {' '}
-              Go to To-do list{' '}
+              {header_content[9]}{' '}
             </button>
           </Link>
         </div>
@@ -251,12 +292,12 @@ function Header() {
         <figure className={styles.sectionParagraph_SecondDiv}>
           <img
             className={styles.headerImage_BackLogo}
-            src='/images/coopersLogo.png'
+            src={header_images[1]}
             alt='background Logo'
           />
           <img
             className={styles.headerImage_Office}
-            src='/images/office.jpg'
+            src={header_images[11]}
             alt='Office'
           />
         </figure>

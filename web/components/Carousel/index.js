@@ -5,62 +5,8 @@ import styles from './styles.module.scss'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
-function Carousels(props) {
-  const [page, setPage] = useState(0)
-
+function Carousels() {
   const [images, setImages] = useState([])
-
-  const info = [
-    {
-      description: 'Organize your daily job enhance your life performance',
-      image: '/images/card_1.png',
-      // imageurl: `https://dario.marbr.net/wp-content/uploads/2022/02/card_1.png`,
-    },
-
-    {
-      description:
-        'Mark one activity as done makes your brain understands the power of doing.',
-      image: '/images/card_2.png',
-      // imageurl: 'https://dario.marbr.net/wp-content/uploads/2022/02/card_2.png',
-    },
-
-    {
-      description:
-        'Careful with missunderstanding the difference between a list of things and a list of desires.',
-      image: '/images/card_3.png',
-    },
-
-    {
-      description: 'Planning meetings as easy as one step.',
-      image: '/images/card_4.jpg',
-    },
-
-    {
-      description: 'Teams are meant to be together, to be in touch.',
-      image: '/images/card_5.png',
-    },
-
-    {
-      description: 'Teams are meant to be together, to be in touch.',
-      image: '/images/card_6.png',
-    },
-
-    {
-      description: 'Results are undeniable as are facts.',
-      image: '/images/card_7.png',
-    },
-
-    {
-      description:
-        'Want to band together to build something awesome ? Plan ahead.',
-      image: '/images/card_8.png',
-    },
-
-    {
-      description: 'Planning acordingly to your desires and fits.',
-      image: '/images/card_9.png',
-    },
-  ]
 
   const responsive = {
     superLargeDesktop: {
@@ -103,8 +49,6 @@ function Carousels(props) {
       get_photos_api()
     }
   }, [images])
-
-  console.log(images)
 
   return (
     <section className={styles.carouselSection}>
