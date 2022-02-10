@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module.scss'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function ToDoList() {
   const [title, setTitle] = useState('')
@@ -13,6 +15,28 @@ function ToDoList() {
   const [list_images, setListImages] = useState([])
 
   const [task_list_text, setTaskText] = useState([])
+
+  const notify_success = () =>
+    toast.success('Congratulations, you have done it!', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+
+  const notify_error = (err) =>
+    toast.error(`Something went wrong, ${err.message}`, {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
 
   useEffect(() => {
     const get_posts = async () => {
@@ -85,6 +109,9 @@ function ToDoList() {
       body: JSON.stringify(taskInfo),
     })
       .then((response) => {
+        if (!response.ok) {
+          throw new Error(notify_error(response))
+        }
         return response.json()
       })
       .then((json) => {
@@ -95,8 +122,11 @@ function ToDoList() {
             title: json.post_title,
           },
         ])
+        notify_success('success')
       })
-      .catch((err) => alert('error' + err))
+      .catch((error) => {
+        return Promise.reject()
+      })
     task_todo.splice(index, 1)
   }
 
@@ -123,6 +153,17 @@ function ToDoList() {
 
   return (
     <section className={styles.sectionMain}>
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <article className={styles.main}>
         <figure>
           <img

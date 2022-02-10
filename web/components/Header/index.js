@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Modal from '../Modal/index'
 import styles from './styles.module.scss'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Header() {
   const [showLogin, setLogin] = useState(false)
@@ -28,6 +30,61 @@ function Header() {
   const checkPass = () => passwordInput.length > minLength
 
   const checkUser = () => userInput.length > userLength
+
+  const notify_signup = () =>
+    toast.success('Welcome to the team!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+
+  const notify_logout = () =>
+    toast.success('You have been successfully logged out!', {
+      position: 'top-right',
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+
+  const notify_loggin = () =>
+    toast.success('You have been successfully logged in!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+
+  const notify_error = (err) =>
+    toast.error(`Something went wrong, ${err.message}`, {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+
+  const notify_invalidToken = () =>
+    toast.warn('Please, you need to log again.', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
 
   useEffect(() => {
     if (localStorage.length !== 0) {
@@ -76,6 +133,7 @@ function Header() {
   const handle_logout = () => {
     localStorage.clear()
     setLogOut(false)
+    return notify_logout()
   }
 
   const body = {
@@ -94,11 +152,17 @@ function Header() {
       body: JSON.stringify(body),
     })
       .then((response) => {
+        if (!response.ok) {
+          throw new Error(notify_error(response))
+        }
         return response.json()
       })
-      .then((json) => console.log(json), alert('Welcome!'))
-      .catch((err) => {
-        alert(err.message)
+      .then((json) => {
+        notify_signup('success')
+        return json
+      })
+      .catch((error) => {
+        return Promise.reject()
       })
   }
 
@@ -117,6 +181,9 @@ function Header() {
       body: JSON.stringify(userInfo),
     })
       .then((response) => {
+        if (!response.ok) {
+          throw new Error(notify_error(response))
+        }
         return response.json()
       })
       .then((json) => {
@@ -124,6 +191,9 @@ function Header() {
         localStorage.setItem('user', JSON.stringify(json.user_email))
         localStorage.setItem('user', JSON.stringify(json.user_nicename))
         setLogOut(true)
+      })
+      .catch((error) => {
+        return Promise.reject()
       })
   }
 
@@ -136,6 +206,9 @@ function Header() {
       },
     })
       .then((response) => {
+        if (!response.ok) {
+          throw new Error(notify_invalidToken(response))
+        }
         return response.json()
       })
       .then((json) => {
@@ -154,10 +227,7 @@ function Header() {
       .then((response) => {
         return response.json()
       })
-      .then(
-        (json) => console.log(json),
-        alert('You are successfully logged in')
-      )
+      .then((json) => console.log(json), notify_loggin('success'))
   }
 
   // função de jwt, validação e sign in
@@ -171,6 +241,17 @@ function Header() {
 
   return (
     <div className={styles.headerContainer}>
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <header>
         <figure className={styles.sectionHeader_FirstDiv}>
           <img src={header_images[0]} alt='logo' />

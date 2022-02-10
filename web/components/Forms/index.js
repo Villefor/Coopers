@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import emailjs from 'emailjs-com'
 import styles from './styles.module.scss'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Forms = () => {
-  const [errors, setError] = React.useState(false)
+  const [errors, setError] = useState(false)
 
-  const [forms_image, setFormsImages] = React.useState([])
+  const [forms_image, setFormsImages] = useState([])
 
   useEffect(() => {
     const get_images_api = async () => {
@@ -16,7 +18,6 @@ const Forms = () => {
         },
       })
         .then((response) => {
-          // console.log(response)
           return response.json()
         })
         .then((json) => {
@@ -27,7 +28,27 @@ const Forms = () => {
     get_images_api()
   }, [])
 
-  console.log(forms_image)
+  const notify_mail = () =>
+    toast.success('Your email have been sent successfully', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+
+  const notify_error = (err) =>
+    toast.error(`Something went wrong, ${err.message}`, {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
 
   const send_email = (event) => {
     event.preventDefault()
@@ -41,8 +62,8 @@ const Forms = () => {
         )
         .then(
           (result) => {
-            console.log(result.text)
-            alert('E-mail sent successfully')
+            notify_mail('success')
+            return result
           },
           (error) => {
             console.log(error.text)
@@ -56,6 +77,17 @@ const Forms = () => {
 
   return (
     <section onSubmit={send_email} className={styles.formsSection}>
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className={styles.formContainer}>
         <figure className={styles.formFigure}>
           <img
