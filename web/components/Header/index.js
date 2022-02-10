@@ -159,7 +159,7 @@ function Header() {
       })
       .then((json) => {
         notify_signup('success')
-        return json
+        console.log(json)
       })
       .catch((error) => {
         return Promise.reject()
@@ -282,7 +282,7 @@ function Header() {
               </div>
               <div>
                 <div className='modal-login_inputs'>
-                  <label className='modal-login_label' htmlfor='email'>
+                  <label className='modal-login_label' htmlFor='email'>
                     Email:
                   </label>
                   <br />
@@ -293,6 +293,7 @@ function Header() {
                     autoComplete='none'
                     onChange={(e) => setEmailInput(e.target.value)}
                     className='input-login'
+                    required
                   />
                   <br />
                   <label className='modal-login_label' htmlFor='username'>
@@ -306,6 +307,7 @@ function Header() {
                     minLength='6'
                     onChange={(e) => setUserInput(e.target.value)}
                     className='input-login'
+                    required
                   />
                   <br />
                   <label className='modal-login_label' htmlFor='password'>
@@ -318,6 +320,7 @@ function Header() {
                     minLength='6'
                     onChange={(e) => setPasswordInput(e.target.value)}
                     className='input-login'
+                    required
                   />
                 </div>
                 <div className='modal-login_buttons'>
