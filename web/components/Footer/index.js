@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './styles.module.scss'
 
 const Footer = (props) => {
+  console.log(props)
   return (
     <section className={styles.section}>
       <footer className={styles.footer}>
