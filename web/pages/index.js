@@ -43,7 +43,7 @@ function Home(props) {
   )
 }
 
-export async function getServerSideProps({ res }) {
+export async function getStaticProps({ res }) {
   const get_images = await fetch(
     'https://dario.marbr.net/wp-json/wp/v2/pages/406',
     {
