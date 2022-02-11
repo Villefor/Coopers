@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-function ToDoList() {
+function ToDoList(props) {
   const [title, setTitle] = useState('')
 
   const [task_done, setTaskDone] = useState([])
@@ -11,10 +11,6 @@ function ToDoList() {
   const [task_todo, setTaskTodo] = useState([])
 
   const [post, setPosts] = useState([])
-
-  const [list_images, setListImages] = useState([])
-
-  const [task_list_text, setTaskText] = useState([])
 
   const notify_success = () =>
     toast.success('Congratulations, you have done it!', {
@@ -55,44 +51,6 @@ function ToDoList() {
         })
     }
     get_posts()
-  }, [])
-
-  useEffect(() => {
-    const get_images_api = async () => {
-      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/406', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((json) => {
-          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
-          setListImages(acf)
-        })
-    }
-    get_images_api()
-  }, [])
-
-  useEffect(() => {
-    const get_text_api = async () => {
-      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/51', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((json) => {
-          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
-          setTaskText(acf)
-        })
-    }
-    get_text_api()
   }, [])
 
   const send_to_done = (index) => async (event) => {
@@ -168,15 +126,16 @@ function ToDoList() {
         <figure>
           <img
             className={styles.sectionParagraph_scrollIcon}
-            src={list_images[13]}
+            src={props.ToDoImages.scroll_icon}
             alt='scroll icon'
           />
         </figure>
         <div className={styles.sectionMain_Div}>
-          <h1 className='section-main__h1'>{task_list_text[10]}</h1>
+          <h1 className='section-main__h1'>{props.ToDoText.task_list_title}</h1>
           <p className='section-main__paragraph'>
             {' '}
-            {task_list_text[11]} <br /> {task_list_text[12]}
+            {props.ToDoText.task_list_title_2} <br />{' '}
+            {props.ToDoText.task_list_title_3}
           </p>
         </div>
       </article>
@@ -186,7 +145,7 @@ function ToDoList() {
           <figure className={styles.toDo_Figures}>
             <img
               className={styles.formImage_Contact}
-              src={list_images[13]}
+              src={props.ToDoImages.aside_logo_icon}
               alt='aside bar'
             />
           </figure>
@@ -196,12 +155,12 @@ function ToDoList() {
           <div className={styles.toDo_Div}>
             <img
               className={styles.toDo_image}
-              src={list_images[4]}
+              src={props.ToDoImages.list_orange_rectangle}
               alt='Orange Rectangle'
             />
-            <h2>{task_list_text[13]}</h2>
+            <h2>{props.ToDoText.task_to_do}</h2>
             <p>
-              {task_list_text[14]} <br /> {task_list_text[15]}
+              {props.ToDoText.task_to_do_2} <br /> {props.ToDoText.task_to_do_3}
             </p>
 
             <div className={styles.todoMakeContainer}>
@@ -209,7 +168,7 @@ function ToDoList() {
                 className={styles.createNewTask}
                 onClick={create_task(title)}
               >
-                <img src='/images/create_task_item.png' />
+                <img src={props.ToDoImages.create_task_icon} />
               </button>
 
               <input
@@ -238,27 +197,28 @@ function ToDoList() {
               className={styles.toDO_Buttons}
               onClick={() => setTaskTodo([])}
             >
-              {task_list_text[16]}
+              {props.ToDoText.task_button_erase}
             </button>
           </div>
 
           <div className={styles.toDoDiv_Done}>
             <img
               className={styles.toDo_image}
-              src={list_images[5]}
+              src={props.ToDoImages.orange_rectangle}
               alt='Green Rectangle'
             />
-            <h2>{task_list_text[17]}</h2>
+            <h2>{props.ToDoText.task_done}</h2>
             {task_done.length !== 0 ? (
               <p className={styles.paragraphFirst}>
-                {task_list_text[18]} <br />{' '}
+                {props.ToDoText.task_done_congratulations} <br />{' '}
                 <strong>
-                  {task_list_text[19]} {task_done.length} {task_list_text[20]}
+                  {props.ToDoText.task_done_length} {task_done.length}{' '}
+                  {props.ToDoText.task_done_length_2}
                 </strong>
               </p>
             ) : (
               <p className={styles.paragraphFirst}>
-                <strong>{task_list_text[21]} </strong>
+                <strong>{props.ToDoText.task_done_waiting_task} </strong>
               </p>
             )}
 
@@ -267,14 +227,16 @@ function ToDoList() {
                   return (
                     <div className={styles.todoContainerText} key={index}>
                       <h2>
-                        <img src={list_images[9]} />
+                        <img src={props.ToDoImages.complete_task_icon} />
                         {item.title}
                       </h2>
                     </div>
                   )
                 })
               : null}
-            <button onClick={delete_task}>{task_list_text[22]}</button>
+            <button onClick={delete_task}>
+              {props.ToDoText.task_button_erase}
+            </button>
           </div>
         </div>
       </section>

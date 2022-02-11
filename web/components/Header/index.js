@@ -112,7 +112,7 @@ function Header(props) {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(notify_error(response))
+          throw new Error(notify_error())
         }
         return response.json()
       })

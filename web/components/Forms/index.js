@@ -4,29 +4,8 @@ import styles from './styles.module.scss'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const Forms = () => {
+const Forms = (props) => {
   const [errors, setError] = useState(false)
-
-  const [forms_image, setFormsImages] = useState([])
-
-  useEffect(() => {
-    const get_images_api = async () => {
-      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/406', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((json) => {
-          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
-          setFormsImages(acf)
-        })
-    }
-    get_images_api()
-  }, [])
 
   const notify_mail = () =>
     toast.success('Your email have been sent successfully', {
@@ -92,17 +71,17 @@ const Forms = () => {
         <figure className={styles.formFigure}>
           <img
             className={styles.formImage_Avatar}
-            src={forms_image[10]}
+            src={props.FormsImages.forms_profile}
             alt='the person responsible for answering your message'
           />
           <img
             className={styles.formImage_Bar}
-            src={forms_image[7]}
+            src={props.FormsImages.graphism}
             alt='background'
           />
           <img
             className={styles.formImage_Contact}
-            src={forms_image[8]}
+            src={props.FormsImages.get_in_touch}
             alt='get in touch'
           />
         </figure>

@@ -8,6 +8,12 @@ import Footer from '../components/Footer'
 function Home(props) {
   const header_images = props.images
   const header_text = props.text
+  const to_do_images = props.images
+  const to_do_texts = props.text
+  const carousel_img = props.carousel_images
+  const forms_images = props.images
+  const footer_images = props.images
+  const footer_text = props.text
   return (
     <div>
       <Head>
@@ -29,16 +35,16 @@ function Home(props) {
         />
       </Head>
       <Header headerImages={header_images} headerText={header_text} />
-      <ToDoList />
-      <Carousel />
-      <Forms />
-      <Footer />
+      <ToDoList ToDoImages={to_do_images} ToDoText={to_do_texts} />
+      <Carousel CarouselImages={carousel_img} />
+      <Forms FormsImages={forms_images} />
+      <Footer FooterImages={footer_images} FooterText={footer_text} />
     </div>
   )
 }
 
 export async function getServerSideProps({ res }) {
-  const header_image = await fetch(
+  const get_images = await fetch(
     'https://dario.marbr.net/wp-json/wp/v2/pages/406',
     {
       method: 'GET',
@@ -48,7 +54,7 @@ export async function getServerSideProps({ res }) {
     }
   )
 
-  const header_text = await fetch(
+  const get_text = await fetch(
     'https://dario.marbr.net/wp-json/wp/v2/pages/51',
     {
       method: 'GET',
@@ -58,13 +64,25 @@ export async function getServerSideProps({ res }) {
     }
   )
 
-  const result_header_text = await header_text.json()
-  const result_header_image = await header_image.json()
+  const get_carousel_images_api = await fetch(
+    'https://dario.marbr.net/wp-json/wp/v2/pages/84',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  )
+
+  const result_text = await get_text.json()
+  const result_image = await get_images.json()
+  const result_carousel_image = await get_carousel_images_api.json()
 
   return {
     props: {
-      images: result_header_image.acf,
-      text: result_header_text.acf,
+      images: result_image.acf,
+      text: result_text.acf,
+      carousel_images: result_carousel_image.acf,
     },
   }
 }

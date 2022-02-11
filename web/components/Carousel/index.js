@@ -5,7 +5,7 @@ import styles from './styles.module.scss'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
-function Carousels() {
+function Carousels(props) {
   const [images, setImages] = useState([])
 
   const responsive = {
@@ -31,20 +31,10 @@ function Carousels() {
   useEffect(() => {
     if (images.length === 0) {
       const get_photos_api = async () => {
-        await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/84', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-          .then((response) => {
-            // console.log(response)
-            return response.json()
-          })
-          .then((json) => {
-            const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
-            setImages(acf)
-          })
+        const acf = Object.keys(props.CarouselImages).map(
+          (key, index) => props.CarouselImages[key]
+        )
+        setImages(acf)
       }
       get_photos_api()
     }
