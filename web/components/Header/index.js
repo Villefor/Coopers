@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import Modal from '../Modal/index'
 import styles from './styles.module.scss'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-function Header() {
+function Header(props) {
   const [showLogin, setLogin] = useState(false)
 
   const [emailInput, setEmailInput] = React.useState('')
@@ -15,10 +16,6 @@ function Header() {
   const [passwordInput, setPasswordInput] = React.useState('')
 
   const [logout, setLogOut] = React.useState(false)
-
-  const [header_images, setHeaderImages] = React.useState([])
-
-  const [header_content, setHeaderContent] = React.useState([])
 
   const checkEmail = () =>
     /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(emailInput)
@@ -75,7 +72,7 @@ function Header() {
       progress: undefined,
     })
 
-  const notify_invalidToken = () =>
+  const notify_invalidToken = (sucesss) =>
     toast.warn('Please, you need to log again.', {
       position: 'top-right',
       autoClose: 3000,
@@ -91,44 +88,6 @@ function Header() {
       setLogOut(true)
     }
   }, [logout])
-
-  useEffect(() => {
-    const get_images_api = async () => {
-      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/406', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((json) => {
-          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
-          setHeaderImages(acf)
-        })
-    }
-    get_images_api()
-  }, [])
-
-  useEffect(() => {
-    const get_text_api = async () => {
-      await fetch('https://dario.marbr.net/wp-json/wp/v2/pages/51', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((json) => {
-          const acf = Object.keys(json.acf).map((key, index) => json.acf[key])
-          setHeaderContent(acf)
-        })
-    }
-    get_text_api()
-  }, [])
 
   const handle_logout = () => {
     localStorage.clear()
@@ -254,15 +213,18 @@ function Header() {
       />
       <header>
         <figure className={styles.sectionHeader_FirstDiv}>
-          <img src={header_images[0]} alt='logo' />
+          <img src={props.headerImages.coopers_logo} alt='logo' />
         </figure>
         <div className={styles.sectionHeader_SecondDiv}>
           {logout ? (
-            <button onClick={handle_logout}> {header_content[1]} </button>
+            <button onClick={handle_logout}>
+              {' '}
+              {props.headerText.Header_LogOut}{' '}
+            </button>
           ) : (
             <button onClick={() => setLogin(true)}>
               {' '}
-              {header_content[0]}{' '}
+              {props.headerText.Header_Login}{' '}
             </button>
           )}
           <Modal show={showLogin} onClose={() => setLogin(false)}>
@@ -271,13 +233,17 @@ function Header() {
                 <figure>
                   <img
                     className='sign_Icon'
-                    src={header_images[12]}
+                    src={props.headerImages.sign_in_icon}
                     alt='background'
                   />
                 </figure>
                 <div className='section-modal_secondDiv'>
-                  <h1 className='login-title'>{header_content[2]} </h1>
-                  <h4 className='login-text'>{header_content[3]}</h4>
+                  <h1 className='login-title'>
+                    {props.headerText.Header_access_list}{' '}
+                  </h1>
+                  <h4 className='login-text'>
+                    {props.headerText.Header_access_list_2}
+                  </h4>
                 </div>
               </div>
               <div>
@@ -333,7 +299,7 @@ function Header() {
                       !(checkEmail() && checkPass()) ? 'disable' : 'enable'
                     }`}
                   >
-                    {header_content[4]}
+                    {props.headerText.Header_signUp}
                   </button>
 
                   <button
@@ -345,7 +311,7 @@ function Header() {
                       !(checkEmail() && checkPass()) ? 'disable' : 'enable'
                     }`}
                   >
-                    {header_content[5]}
+                    {props.headerText.Header_signIn}
                   </button>
                 </div>
               </div>
@@ -358,17 +324,17 @@ function Header() {
         <div className={styles.sectionParagraph_FirstDiv}>
           <p>
             {' '}
-            {header_content[6]} <br />{' '}
+            {props.headerText.Header_main_title} <br />{' '}
             <span className={styles.sectionParagraph_Span}>
               {' '}
-              {header_content[7]}{' '}
+              {props.headerText.Header_main_title_2}{' '}
             </span>{' '}
           </p>
-          <p> {header_content[8]}</p>
+          <p> {props.headerText.Header_main_title_3}</p>
           <Link href='#toDo_Sec'>
             <button className={styles.headerLink_GoToButton}>
               {' '}
-              {header_content[9]}{' '}
+              {props.headerText.Header_button_go_to_list}{' '}
             </button>
           </Link>
         </div>
@@ -376,12 +342,12 @@ function Header() {
         <figure className={styles.sectionParagraph_SecondDiv}>
           <img
             className={styles.headerImage_BackLogo}
-            src={header_images[1]}
+            src={props.headerImages.coopers_back}
             alt='background Logo'
           />
           <img
             className={styles.headerImage_Office}
-            src={header_images[11]}
+            src={props.headerImages.office_logo}
             alt='Office'
           />
         </figure>

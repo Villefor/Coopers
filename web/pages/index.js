@@ -5,7 +5,9 @@ import Carousel from '../components/Carousel'
 import Forms from '../components/Forms'
 import Footer from '../components/Footer'
 
-function Home() {
+function Home(props) {
+  const header_images = props.images
+  const header_text = props.text
   return (
     <div>
       <Head>
@@ -26,13 +28,45 @@ function Home() {
           rel='stylesheet'
         />
       </Head>
-      <Header />
+      <Header headerImages={header_images} headerText={header_text} />
       <ToDoList />
       <Carousel />
       <Forms />
       <Footer />
     </div>
   )
+}
+
+export async function getServerSideProps({ res }) {
+  const header_image = await fetch(
+    'https://dario.marbr.net/wp-json/wp/v2/pages/406',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  )
+
+  const header_text = await fetch(
+    'https://dario.marbr.net/wp-json/wp/v2/pages/51',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  )
+
+  const result_header_text = await header_text.json()
+  const result_header_image = await header_image.json()
+
+  return {
+    props: {
+      images: result_header_image.acf,
+      text: result_header_text.acf,
+    },
+  }
 }
 
 export default Home
