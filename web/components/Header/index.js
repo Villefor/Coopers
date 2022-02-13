@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import Modal from '../Modal/index'
 import styles from './styles.module.scss'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Router from 'next/router'
 
 function Header(props) {
   const [showLogin, setLogin] = useState(false)
@@ -20,7 +20,7 @@ function Header(props) {
   const checkEmail = () =>
     /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(emailInput)
 
-  const minLength = 6
+  const minLength = 4
 
   const userLength = 3
 
@@ -62,7 +62,7 @@ function Header(props) {
     })
 
   const notify_error = (err) =>
-    toast.error(`Something went wrong, ${err.message}`, {
+    toast.error(`Something went wrong, user  or user email already exists`, {
       position: 'top-right',
       autoClose: 3000,
       hideProgressBar: false,
@@ -92,7 +92,7 @@ function Header(props) {
   const handle_logout = () => {
     localStorage.clear()
     setLogOut(false)
-    return notify_logout()
+    return notify_logout(), Router.reload(window.location.pathname)
   }
 
   const body = {
@@ -112,7 +112,7 @@ function Header(props) {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(notify_error())
+          throw new Error(notify_error('error'))
         }
         return response.json()
       })
@@ -166,12 +166,15 @@ function Header(props) {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(notify_invalidToken(response))
+          throw new Error(notify_invalidToken('error'))
         }
         return response.json()
       })
       .then((json) => {
         console.log(json)
+      })
+      .catch((error) => {
+        return Promise.reject()
       })
   }
 
@@ -196,6 +199,8 @@ function Header(props) {
     await validate_token()
 
     await get_user()
+
+    return Router.reload(window.location.pathname)
   }
 
   return (
@@ -215,7 +220,10 @@ function Header(props) {
         <figure className={styles.sectionHeader_FirstDiv}>
           <img src={props.headerImages.coopers_logo} alt='logo' />
         </figure>
-        <div className={styles.sectionHeader_SecondDiv}>
+        <div
+          className={styles.sectionHeader_SecondDiv}
+          id='header_login_anchor'
+        >
           {logout ? (
             <button onClick={handle_logout}>
               {' '}
@@ -270,7 +278,7 @@ function Header(props) {
                     name='username'
                     type='text'
                     id='username'
-                    minLength='6'
+                    minLength='4'
                     onChange={(e) => setUserInput(e.target.value)}
                     className='input-login'
                     required
@@ -283,7 +291,7 @@ function Header(props) {
                   <input
                     name='password'
                     type='password'
-                    minLength='6'
+                    minLength='4'
                     onChange={(e) => setPasswordInput(e.target.value)}
                     className='input-login'
                     required
@@ -293,7 +301,16 @@ function Header(props) {
                   <button
                     className='modal_button'
                     type='button'
-                    disabled={!(checkEmail() && checkPass() && checkUser())}
+                    disabled={
+                      !(
+                        checkEmail() &&
+                        checkPass() &&
+                        checkUser() &&
+                        emailInput &&
+                        passwordInput &&
+                        userInput
+                      )
+                    }
                     onClick={handle_submit}
                     className={`entrar-btn ${
                       !(checkEmail() && checkPass()) ? 'disable' : 'enable'
