@@ -62,7 +62,7 @@ function Carousels(props) {
         customTransition='all .5'
         containerClass={styles.carrouselCardContainer}
         removeArrowOnDeviceType={['tablet', 'mobile']}
-        dotListClass='custom-dot-list-style'
+        dotListClass={'custom-dot-list-style'}
         itemClass='carousel-item-padding-40-px'
       >
         {images !== 0
