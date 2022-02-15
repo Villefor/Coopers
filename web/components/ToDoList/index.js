@@ -122,6 +122,26 @@ function ToDoList(props) {
     setTaskDone([])
   }
 
+  const delete_single_task = async (id) => {
+    fetch(`https://dario.marbr.net/wp-json/api/task/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userData')}`,
+      },
+    })
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => console.log(json))
+
+    const remove_task = task_done.filter((task) => {
+      return task.id !== id
+    })
+
+    setTaskDone(remove_task)
+  }
+
   return (
     <section className={styles.sectionMain}>
       <ToastContainer
@@ -224,6 +244,7 @@ function ToDoList(props) {
                 alt='Green Rectangle'
               />
               <h2>{props.ToDoText.task_done}</h2>
+
               {task_done.length !== 0 ? (
                 <p className={styles.paragraphFirst}>
                   {props.ToDoText.task_done_congratulations} <br />{' '}
@@ -242,15 +263,24 @@ function ToDoList(props) {
                 ? task_done.map((item, index) => {
                     return (
                       <div className={styles.todoContainerText} key={index}>
-                        <h2>
-                          <img src={props.ToDoImages.complete_task_icon} />
-                          {item.title}
-                        </h2>
+                        <img src={props.ToDoImages.complete_task_icon} />
+                        <h2>{item.title}</h2>
+
+                        <button
+                          className={styles.todo_button_deleteTask}
+                          key={index}
+                          onClick={() => delete_single_task(item.id)}
+                        >
+                          delete
+                        </button>
                       </div>
                     )
                   })
                 : null}
-              <button onClick={delete_task}>
+              <button
+                className={styles.todo_button_eraseAll}
+                onClick={delete_task}
+              >
                 {props.ToDoText.task_button_erase}
               </button>
             </div>

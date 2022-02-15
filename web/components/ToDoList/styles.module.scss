@@ -151,7 +151,8 @@
         }
 
         p {
-          font-family: 'Montserrat';
+          font-family:'Montserrat';
+          font-weight: 400;
           font-style: normal;
           font-weight: normal;
           font-size: 24px;
@@ -198,20 +199,29 @@
           padding-bottom: 4%;
 
           .taskTodosContainer {
-              width: 100%;
               display: flex;
               align-items: center;
               margin-top: 16px;
               margin-left: 80px;
+              max-width:0px;
+              min-width: 100%;
+            //   margin-top: 10%;
               .buttonSendToDone {
                 width: 25px;
                 height: 25px;
-                  background: none;
-                  border: 2px solid #E88D39;
-                  border-radius: 100%;
+                background: none;
+                border: 2px solid #E88D39;
+                border-radius: 100%;
+                max-width: 100%;
+                margin-right: 16px;
+                padding-left: 6%;
               }
               p {
-                margin-left: 12px;
+                max-width: 70%;
+                word-wrap: break-word;
+                font-family:'Montserrat';
+                font-weight: 400;
+                font-size: 16px;
               }
           }
 
@@ -235,6 +245,7 @@
                     margin-left: 6px;
                     font-weight: bold;
                     scroll-behavior: smooth;
+                    width: 73%;
                 }
                 .toDoInput_title:focus {
                     outline: none;
@@ -309,6 +320,8 @@
               border:none;
               margin-top: 20px;
               padding-left: 2%;
+              font-family:'Montserrat';
+              font-weight: 400;
           }
 
           .toDO_Buttons {
@@ -339,8 +352,6 @@
             font-family:'Montserrat';
             font-size: 24px;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            // min-width: 100%;
-            //width: 100%;
 
             button {
                 background-color: black;
@@ -354,6 +365,54 @@
                 font-size: 24px;
             }
 
+             .todoContainerText {
+                    max-width:0px;
+                    min-width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    margin-top: 10%;
+                    img {
+                        max-width: 100%;
+                        margin-right: 16px;
+                        margin: auto;
+                        padding-left: 10%;
+                    }
+
+                    h2 {
+                        word-wrap: break-word;
+                        font-size: 16px;
+                        text-align: left;
+                        line-height: 24px;
+                        font-family:'Montserrat';
+                        font-weight: 700;
+                        padding-left: 5%;
+                        max-width: 50%;
+                        min-width: 50%;
+                    }
+
+                    p {
+                        font-size: 12px;
+                        text-align: left;
+                        margin-left: 20px;
+                    }
+                    .todo_button_deleteTask{
+                        font-size: 16px;
+                        background: none;
+                        border-radius: 25px;
+                        padding: 0.4rem 0.8rem;
+                        color: #9499B3;
+                        font-family:'Montserrat';
+                        font-weight: 700;
+                        font-style: bold;
+                        // max-height: 0%;
+                        margin:auto;
+                        max-width: 40%;
+                    }
+                    .todo_button_eraseAll:hover {
+                        filter: brightness(0.8);
+                    }
+                }
+
             @media (min-width: 1023px) {
                 display: flex;
                 align-items: center;
@@ -362,6 +421,7 @@
                 font-family:'Montserrat';
                 font-size: 24px;
                 margin-left: 46px;
+
                 //box-shadow: 0px 4px 60px rgba(66, 66, 66, 0.2);
 
                 .paragraphFirst {
@@ -369,35 +429,66 @@
                 }
 
                 .todoContainerText {
-                    width: 100%;
-                    margin-top: 10px;
+                    max-width:0px;
+                    min-width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+
+                    img {
+                        max-width: 100%;
+                        margin-right: 16px;
+                        margin: auto;
+                        padding-left: 10%;
+                    }
+
                     h2 {
+                        word-wrap: break-word;
                         font-size: 16px;
                         text-align: left;
-                        line-height: 20px;
-                        img {
-                            width: 16px;
-                            margin-right: 16px;
-                            margin-left: 18px;
-                        }
+                        line-height: 24px;
+                        font-family:'Montserrat';
+                        font-weight: 700;
+                        padding-left: 5%;
+                        max-width: 50%;
+                        min-width: 50%;
                     }
+
                     p {
                         font-size: 12px;
                         text-align: left;
                         margin-left: 20px;
                     }
+                    .todo_button_deleteTask{
+                        font-size: 16px;
+                        background: none;
+                        border-radius: 25px;
+                        padding: 0.4rem 0.8rem;
+                        color: #9499B3;
+                        font-family:'Montserrat';
+                        font-weight: 700;
+                        font-style: bold;
+                        margin:auto;
+                        max-width: 40%;
+                    }
+                    // .todo_button_deleteTask:hover{
+                    //     filter: brightness(0.8);
+                    // }
+
+                    .todo_button_eraseAll {
+                        background-color: black;
+                        color:white;
+                        border: none;
+                        border-radius:10px;
+                        max-width: 300px;
+                        margin-top: 40px;
+                        height: 64px;
+                        font-size: 24px;
+                    }
+                    .todo_button_eraseAll:hover {
+                        filter: brightness(0.5);
+                    }
                 }
 
-                button {
-                    background-color: black;
-                    color:white;
-                    border: none;
-                    border-radius:10px;
-                    width: 300px;
-                    margin-top: 40px;
-                    height: 64px;
-                    font-size: 24px;
-                }
             }
 
         }
