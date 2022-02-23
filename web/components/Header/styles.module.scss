@@ -141,7 +141,7 @@
                     display: flex;
                     position: absolute;
                     z-index: 1;
-                    width: 41%;
+                    // width: 41%;
                     min-height: 50%;
                     margin-top: -4%;
                     max-width: 50%;
@@ -150,14 +150,14 @@
                 display: flex;
                 position: absolute;
                 z-index: 1;
-                width: 38.0%;
+                max-width: 38%;
                 margin-top: -5%;
             }
 
             .headerImage_Office {
                 position: relative;
                 z-index: 1;
-                width: 80%;
+                max-width: 80%;
                 margin-top: 5%;
                 padding-right: 15%;
             }
