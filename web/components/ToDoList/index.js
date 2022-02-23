@@ -203,7 +203,10 @@ function ToDoList(props) {
                   onClick={create_task(title)}
                   disabled={!title}
                 >
-                  <img src={props.ToDoImages.create_task_icon} />
+                  <img
+                    src={props.ToDoImages.create_task_icon}
+                    alt='creating a task icon'
+                  />
                 </button>
 
                 <input
@@ -263,7 +266,10 @@ function ToDoList(props) {
                 ? task_done.map((item, index) => {
                     return (
                       <div className={styles.todoContainerText} key={index}>
-                        <img src={props.ToDoImages.complete_task_icon} />
+                        <img
+                          src={props.ToDoImages.complete_task_icon}
+                          alt='completed task icon'
+                        />
                         <h2>{item.title}</h2>
 
                         <button
