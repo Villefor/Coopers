@@ -65,7 +65,8 @@
     input {
       display: flex;
       flex-direction: row;
-      border-radius: 8px;
+      border-radius: 4px;
+      border: 1px solid black;
       padding-left: 2%;
     }
   }
@@ -104,12 +105,14 @@
       line-height: 20px;
       width: 80%;
       padding: 16px;
-      border-radius: 8px;
+      border-radius: 4px;
+      border: 1px solid black;
       padding-left: 2%;
     }
     textarea {
       width: 80%;
-      border-radius: 8px;
+      border-radius: 4px;
+      border: 1px solid black;
       padding: 8px;
       height: 200px;
       padding-left: 2%;
